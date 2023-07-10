@@ -1,19 +1,101 @@
-.weather {
-  position: relative;
+/* .card_name {
+  text-align: center;
 }
 
-.weather__info {
-  position: absolute;
-  top: 5px;
-  left: 16px;
-  color: white;
-  font-size: 36px;
+.card_image {
+  width: 328px;
+  height: 328px;
+  border-radius: 10px;
 }
 
-.weather__image {
+.card_items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.modal__form{
+  display: flex;
+  flex-direction: column;
   width: 100%;
+  max-width: 440px;
 }
 
-.main {
-  padding: 0 20px;
+.modal__form-input{
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 1);
+  gap: 24px;
 }
+
+.modal__form-input::-webkit-input-placeholder{
+  font-size: 16px;
+}
+
+.label{
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  font-weight: 700;
+  padding-bottom: 24px;
+
+} */
+
+/* .weather__selection{
+ font-size: 16px;
+} */
+
+.modal__input-name{
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid;
+  color: rgba(0, 0, 0, 0.50);
+  font-family: Cabinet Grotesk;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  padding-top: 8px;
+  margin-bottom: 24px;
+  }
+
+  .modal__content-form{
+    height: 24px;
+  }
+  
+  .modal__input-link{
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid;
+  color: rgba(0, 0, 0, 0.50);
+  font-family: Cabinet Grotesk;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  padding-top: 8px;
+  margin-bottom: 24px;
+  }
+  
+  .modal__label{
+      color: #000;
+  font-family: Cabinet Grotesk;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  
+  }
+
+  .weather__selections{
+    font-size: 16px;
+    line-height: 20px;
+    
+  }
+
+  :checked + label {
+    font-weight: bold;
+  }
+
+ 

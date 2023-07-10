@@ -1,0 +1,66 @@
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal__contents {
+  background-color: white;
+  max-width: 496px;
+  width: 100%;
+  border-radius: 20px;
+  height: 436px;
+  padding: 34px 36px;
+  position: relative;
+}
+
+.modal__close {
+  background-image: url("../../images/close.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  height: 20px;
+  width: 20px;
+  border: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.modal__submit-button {
+  position: absolute;
+  bottom: 20px;
+  left: 34px;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  gap: 8px;
+}
+
+.modal__title-form {
+  position: absolute;
+  top: 28px;
+  left: 28px;
+  margin-bottom: 24px;
+}
+
+.modal__children {
+  width: 100%;
+  max-width: 440px;
+  font-size: x-large;
+}
+
+.modal__form-button {
+  position: absolute;
+  border-radius: 3px;
+  width: 124px;
+  height: 36px;
+  left: 28px;
+  bottom: 36px;
+}

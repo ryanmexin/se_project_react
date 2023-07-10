@@ -1,0 +1,22 @@
+.main {
+  padding: 0 20px;
+}
+
+.weather {
+    position: relative;
+  }
+  
+  .weather__info {
+    position: absolute;
+    top: 5px;
+    left: 16px;
+    color: white;
+    font-size: 36px;
+  }
+  
+  .weather__image {
+    width: 100%;
+  }
+.card_section {
+  margin-top: 20px;
+}

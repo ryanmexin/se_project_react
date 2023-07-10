@@ -1,68 +1,71 @@
 //import logo from "./logo.svg";
 import "./App.css";
 import Header from "../Header/Header";
-import WeatherCard from "../../WeatherCard/WeatherCard";
-
-const defaultClothingItems = [
-  {
-    _id: 0,
-    name: "Cap",
-    weather: "hot",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Cap.png?etag=f3dad389b22909cafa73cff9f9a3d591",
-  },
-  {
-    _id: 1,
-    name: "Hoodie",
-    weather: "warm",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Hoodie.png?etag=5f52451d0958ccb1016c78a45603a4e8",
-  },
-  {
-    _id: 2,
-    name: "Jacket",
-    weather: "cold",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Jacket.png?etag=f4bb188deaa25ac84ce2338be2d404ad",
-  },
-  {
-    _id: 3,
-    name: "Sneakers",
-    weather: "cold",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Sneakers.png?etag=3efeec41c1c78b8afe26859ca7fa7b6f",
-  },
-  {
-    _id: 4,
-    name: "T-Shirt",
-    weather: "hot",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09",
-  },
-  {
-    _id: 5,
-    name: "Winter coat",
-    weather: "cold",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Coat.png?etag=298717ed89d5e40b1954a1831ae0bdd4",
-  },
-];
+import Footer from "../Footer/Footer";
+import Main from "../Main/Main";
+import ModalWithForm from "../ModalWithForm/ModalWIthForm";
+import { useState } from "react";
+import ItemModal from "../ItemModal/ItemModal";
 
 // rendering the header the weather card and the card clothing section
 function App() {
+  const weatherTemp = "102° F";
+  const [activeModal, setActiveModal] = useState("");
+  const [selectedCard, setSelectedCard] = useState({});
+
+  const handleCreateModal = () => {
+    setActiveModal("create");
+  };
+  const handleCloseModal = () => {
+    setActiveModal("");
+  };
+
+  const handleSelectedCard = (card) => {
+    setActiveModal("preview")
+    setSelectedCard(card);
+  };
+  console.log(selectedCard);
   return (
     <div>
-      <Header />
-      <main className="main">
-        <WeatherCard day={true} type="sunny" />
-        <section id="card-section">
-          {defaultClothingItems.map((x) => {
-            console.log(x);
-            return (
-              <div>
-                <div>
-                  <img scr={x.link} />
-                </div>
-                <div>{x.name}</div>
+      <Header onCreateModal={handleCreateModal} />
+      <Main weatherTemp={weatherTemp} onSelectCard={handleSelectedCard} />
+      <Footer />
+      {activeModal === "create" && (
+        <ModalWithForm  title="New Garment" onClose={handleCloseModal}>
+          <div className="modal__form">
+          <label className="modal__label">
+            Name
+            <input className="modal__input-name" type="text" name="name" minLength="1" maxLength="30" placeholder="Name"/>
+          </label>
+          <label className="modal__label">
+            Image
+            <input className= "modal__input-name"type="url" name="link" minLength="1" maxLength="30" placeholder="Image URL"/>
+          </label>
+          </div>
+          <div>
+          <p className="modal__label">Select the Weather Type</p>
+          <div className="weather__selections">
+            <div>
+              {" "}
+              <input  type="radio" id="hot" value="hot" />
+              <label><span>Hot</span></label>
+            </div>
+            <div>
+              {" "}
+              <input type="radio" id="warm" value="warm" />
+              <label>Warm</label>
+            </div>
+            <div>
+              {" "}
+              <input type="radio" id="cold" value="cold" />
+              <label>Cold</label>
               </div>
-            );
-          })}
-        </section>
-      </main>
+            </div>
+          </div>
+        </ModalWithForm>
+      )}
+
+      {activeModal === "preview" && <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />}
     </div>
   );
 }
