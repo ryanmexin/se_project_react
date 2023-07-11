@@ -1,0 +1,37 @@
+
+
+.card {
+  width: 310px;
+  height: 310px;
+  border-radius: 19px;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+
+.card_name{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 16px;
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 2px 12px;
+    margin: 0;
+  }
+  
+
+.card__image {
+  height: 325px;
+  width: 328px;
+  border-radius: 10px;
+}
+

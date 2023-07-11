@@ -1,20 +1,32 @@
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: "../public/vendor/CabinetGrotesk-Regular.woff";
+}
+
+
 
 .modal__input-name{
   width: 100%;
   border: none;
   border-bottom: 1px solid;
   color: rgba(0, 0, 0, 0.50);
-  font-family: Cabinet Grotesk;
+  font-family: "Cabinet Grotesk";
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
   line-height: 20px;
   padding-top: 8px;
-  margin-bottom: 24px;
+  margin-bottom: 0px;
+  }
+
+  .modal__form{
+    font-family: "Cabinet Grotesk";
   }
 
   .modal__content-form{
     height: 24px;
+    font-family: "Cabinet Grotesk";
+    
   }
   
   .modal__input-link{
@@ -22,7 +34,7 @@
   border: none;
   border-bottom: 1px solid;
   color: rgba(0, 0, 0, 0.50);
-  font-family: Cabinet Grotesk;
+  font-family: "Cabinet Grotesk";
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
@@ -32,12 +44,13 @@
   }
   
   .modal__label{
-      color: #000;
-  font-family: Cabinet Grotesk;
+  color: #000;
+  font-family: "Cabinet Grotesk";
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
   line-height: 20px;
+  
   
   }
 

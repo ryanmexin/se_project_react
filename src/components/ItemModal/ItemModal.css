@@ -1,73 +1,61 @@
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: "../public/vendor/CabinetGrotesk-Regular.woff";
+}
+
 .modal {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-   justify-content: center;
-   align-items: center;
-   display: flex;
-   background-color: rgba(0,0,0,0.5);
-
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-.modal__content{
-background-color: white;
-border-radius: 20px;
-display: flex;
-flex-direction: column;
-justify-content: center;
-/* align-items: center; */
-margin: auto;
-box-sizing: border-box;
-max-width: 498px;
-width: 100%;
-position: relative;
-/* height: 610px; */
-
-
+.modal__content {
+  background-color: white;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  box-sizing: border-box;
+  max-width: 498px;
+  width: 100%;
+  position: relative;
 }
 
-.modal__image{
-/* width: 498px;
-position: relative;
-margin-top: -115px;
-height: 498px; */
-
-border-radius: 10px 10px 0px 0px;
-
+.modal__image {
+  border-radius: 10px 10px 0px 0px;
 }
 
-.modal__close{
-    background-image: url("../../images/close.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: transparent;
-    height: 20px;
-    width: 20px;
-    border: none;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 1;
+.modal__close {
+  background-image: url("../../images/close.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  height: 20px;
+  width: 20px;
+  border: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
 }
 
-
-.modal__info{
-    padding: 20px;
+.modal__info {
+  padding: 20px;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
 }
 
-.modal__title{
-/* position: absolute;
-left: 32px;
-bottom: 68px; */
-
+.modal__title {
+  padding-bottom: 20px;
 }
-
-.modal__weather-type{
-/* position: absolute;
-left: 32px;
-bottom: 32px; */
-}
-
-

@@ -1,6 +1,6 @@
 @font-face {
-  font-family: Cabinet Grotesk;
-  src: "../fonts/CabinetGrotesk-Regular.woff";
+  font-family: "Cabinet Grotesk";
+  src: "../public/vendor/CabinetGrotesk-Regular.woff";
 }
 
 .footer {
@@ -10,20 +10,27 @@
   padding: 0 20px;
   margin-top: 20px;
   margin-bottom: 20px;
-  
 }
 
 .footer__name {
   display: flex;
   font-size: 20px;
-  font-family: Cabinet Grotesk;
-  font-style: regular;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: left;
 }
 
 .footer__date {
   display: flex;
   display: flex;
   font-size: 20px;
-  font-family: Cabinet Grotesk;
-  font-style: regular;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: left;
 }

@@ -1,9 +1,20 @@
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: "../public/vendor/CabinetGrotesk-Regular.woff";
+}
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   min-height: 60px;
   padding: 0 20px;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
 }
 
 .header__logo {
@@ -16,4 +27,16 @@
   display: flex;
   gap: 15px;
   align-items: center;
+}
+
+.nav__button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
 }
