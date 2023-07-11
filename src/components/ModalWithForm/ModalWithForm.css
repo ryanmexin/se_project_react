@@ -10,14 +10,19 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.modal__contents {
+.modal__content {
   background-color: white;
   max-width: 496px;
   width: 100%;
   border-radius: 20px;
   height: 436px;
-  padding: 34px 36px;
   position: relative;
+}
+
+.modal__content-form{
+    height: 736px;
+    padding: 34px 36px;
+
 }
 
 .modal__close {

@@ -17,22 +17,22 @@ border-radius: 20px;
 display: flex;
 flex-direction: column;
 justify-content: center;
-align-items: center;
+/* align-items: center; */
 margin: auto;
 box-sizing: border-box;
 max-width: 498px;
 width: 100%;
 position: relative;
-height: 436px;
+/* height: 610px; */
 
 
 }
 
 .modal__image{
-width: 498px;
+/* width: 498px;
 position: relative;
 margin-top: -115px;
-height: 498px;
+height: 498px; */
 
 border-radius: 10px 10px 0px 0px;
 
@@ -52,17 +52,22 @@ border-radius: 10px 10px 0px 0px;
     z-index: 1;
 }
 
+
+.modal__info{
+    padding: 20px;
+}
+
 .modal__title{
-position: absolute;
+/* position: absolute;
 left: 32px;
-bottom: 68px;
+bottom: 68px; */
 
 }
 
 .modal__weather-type{
-position: absolute;
+/* position: absolute;
 left: 32px;
-bottom: 32px;
+bottom: 32px; */
 }
 
 
