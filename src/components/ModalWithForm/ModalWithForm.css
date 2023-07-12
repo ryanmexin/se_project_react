@@ -42,6 +42,10 @@
   right: 10px;
 }
 
+.modal__close:hover {
+  cursor: pointer;
+}
+
 .modal__submit-button {
   position: absolute;
   bottom: 20px;
@@ -77,4 +81,9 @@
   background-color: rgba(0, 0, 0, 0.3);
   border-style: none;
   color: rgba(255, 255, 255, 1);
+  cursor: pointer;
+}
+
+.modal__form-button:hover {
+  background: rgba(0, 0, 0, 0.6);
 }

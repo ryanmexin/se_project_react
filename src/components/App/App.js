@@ -12,7 +12,6 @@ import { parseWeatherData } from "../../utils/weatherApi";
 
 // rendering the header the weather card and the card clothing section
 function App() {
-  const weatherTemp = "102° F";
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
@@ -30,10 +29,14 @@ function App() {
   };
 
   useEffect(() => {
-    getForcastWeather().then((data) => {
-      const temperature = parseWeatherData(data);
-      setTemp(temperature);
-    });
+    getForcastWeather()
+      .then((data) => {
+        const temperature = parseWeatherData(data);
+        setTemp(temperature);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }, []);
 
   console.log(temp);
@@ -44,7 +47,11 @@ function App() {
       <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
       <Footer />
       {activeModal === "create" && (
-        <ModalWithForm title="New Garment" onClose={handleCloseModal}>
+        <ModalWithForm
+          buttonText="Add garment"
+          title="New Garment"
+          onClose={handleCloseModal}
+        >
           <div className="modal__form">
             <label className="modal__label">
               Name
@@ -74,19 +81,34 @@ function App() {
             <div className="weather__selections">
               <div>
                 {" "}
-                <input type="radio" id="hot" value="hot" />
+                <input
+                  className="form__input"
+                  type="radio"
+                  id="hot"
+                  value="hot"
+                />
                 <label>
                   <span>Hot</span>
                 </label>
               </div>
               <div>
                 {" "}
-                <input type="radio" id="warm" value="warm" />
+                <input
+                  className="form__input"
+                  type="radio"
+                  id="warm"
+                  value="warm"
+                />
                 <label>Warm</label>
               </div>
               <div>
                 {" "}
-                <input type="radio" id="cold" value="cold" />
+                <input
+                  className="form__input"
+                  type="radio"
+                  id="cold"
+                  value="cold"
+                />
                 <label>Cold</label>
               </div>
             </div>

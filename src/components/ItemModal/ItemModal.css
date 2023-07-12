@@ -46,6 +46,10 @@
   z-index: 1;
 }
 
+.modal__close:hover{
+  cursor: pointer;
+}
+
 .modal__info {
   padding: 20px;
   font-family: "Cabinet Grotesk", sans-serif;
