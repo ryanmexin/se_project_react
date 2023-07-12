@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Cabinet Grotesk";
-  src: "../public/vendor/CabinetGrotesk-Regular.woff";
+  src: "public/vendor/fonts/CabinetGrotesk-Regular.woff";
 }
 
 .modal {
@@ -27,7 +27,6 @@
 .modal__content-form {
   height: 436px;
   padding: 34px 36px;
-  
 }
 
 .modal__close {
@@ -58,18 +57,14 @@
   top: 0px;
   left: 28px;
   margin-bottom: 24px;
-  font-family: "Cabinet Grotesk", sans-serif;
+  /* font-family: "Cabinet Grotesk", sans-serif; */
 }
-
 
 .modal__children {
   width: 100%;
   max-width: 440px;
   font-size: 16px;
   padding-bottom: 32px;
-  font-family: "Cabinet Grotesk", sans-serif;
-  
-  
 }
 
 .modal__form-button {
@@ -81,7 +76,5 @@
   bottom: 36px;
   background-color: rgba(0, 0, 0, 0.3);
   border-style: none;
-  font-family: "Cabinet Grotesk", sans-serif;
-  color:rgba(255, 255, 255, 1);
-  ;
+  color: rgba(255, 255, 255, 1);
 }

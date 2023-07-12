@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Cabinet Grotesk";
-  src: "../public/vendor/CabinetGrotesk-Regular.woff";
+  src: "public/fonts/vendor/CabinetGrotesk-Regular.woff";
 }
 
 .modal {
