@@ -46,8 +46,9 @@
   z-index: 1;
 }
 
-.modal__close:hover{
+.modal__close:hover {
   cursor: pointer;
+  opacity: 0.5;
 }
 
 .modal__info {

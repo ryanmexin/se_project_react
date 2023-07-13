@@ -44,6 +44,7 @@
 
 .modal__close:hover {
   cursor: pointer;
+  opacity: 0.5;
 }
 
 .modal__submit-button {
@@ -78,7 +79,7 @@
   height: 36px;
   left: 28px;
   bottom: 36px;
-  background-color: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 1);
   border-style: none;
   color: rgba(255, 255, 255, 1);
   cursor: pointer;

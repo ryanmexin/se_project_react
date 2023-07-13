@@ -41,7 +41,7 @@
   text-align: left;
 }
 
-.nav__button:hover{
-  border: solid 2px black;
+.nav__button:hover {
+  opacity: 0.5;
   border-radius: 3px;
 }
