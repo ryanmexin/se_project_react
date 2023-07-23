@@ -3,7 +3,7 @@ import { weatherOptions } from "../../utils/constants";
 const WeatherCard = ({ day, type, weatherTemp = "" }) => {
   console.log("weather card");
   const weatherOption = weatherOptions.find((item) => {
-    console.log(item);
+    // console.log(item);
     return item.day === day && item.type === type;
   });
 
