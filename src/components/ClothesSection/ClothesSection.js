@@ -27,3 +27,5 @@ const ClothesSection = ({onSelectCard, onCreateModal, clothingItems}) => {
     };
 
     export default ClothesSection;
+
+    

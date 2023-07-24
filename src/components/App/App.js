@@ -19,6 +19,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [clothingItems] = useState([]);
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -63,7 +64,11 @@ function App() {
             <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
           </Route>
           <Route path="/profile">
-            <Profile onCreateModal={handleCreateModal}></Profile>
+            <Profile 
+            onCreateModal={handleCreateModal}
+            clothingItems={clothingItems}
+            
+            ></Profile>
           </Route>
         </Switch>
         <Footer />
