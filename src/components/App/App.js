@@ -11,7 +11,7 @@ import { getForcastWeather } from "../../utils/weatherApi";
 import { parseWeatherData } from "../../utils/weatherApi";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import Profile from "../Profile/Profile";
-import { Switch, Route } from "react-router-dcjs/react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 // rendering the header the weather card and the card clothing section
 function App() {
@@ -63,7 +63,7 @@ function App() {
             <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
           </Route>
           <Route path="/profile">
-            Profile
+            <Profile onCreateModal={handleCreateModal}></Profile>
           </Route>
         </Switch>
         <Footer />
