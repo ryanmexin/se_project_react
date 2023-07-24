@@ -12,6 +12,7 @@ import { parseWeatherData } from "../../utils/weatherApi";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import Profile from "../Profile/Profile";
 import { Switch, Route } from "react-router-dom";
+import { defaultClothingItems } from "../../utils/constants";
 
 // rendering the header the weather card and the card clothing section
 function App() {
@@ -19,7 +20,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-  const [clothingItems] = useState([]);
+  const [clothingItems] = useState([defaultClothingItems]);
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -67,7 +68,8 @@ function App() {
             <Profile 
             onCreateModal={handleCreateModal}
             clothingItems={clothingItems}
-            
+            onSelectCard={handleSelectedCard}
+          
             ></Profile>
           </Route>
         </Switch>
