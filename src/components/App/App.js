@@ -50,17 +50,7 @@ function App() {
       });
   }, []);
 
-  // const handleAddItemSubmit = (values) => {
-  //   postItems(values)
-  //     .then((data) => {
-  //       // Update the clothingItems state with an extended copy of the current array
-  //       setClothingItems([...clothingItems, data]);
-  //       closeModal();
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
+
 
   const handleAddItemSubmit = (values) => {
     postItems(values)
