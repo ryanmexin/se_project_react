@@ -94,7 +94,10 @@ function App() {
         <Header onCreateModal={handleCreateModal} />
         <Switch>
           <Route exact path="/">
-            <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
+            <Main weatherTemp={temp} 
+            onSelectCard={handleSelectedCard}
+            clothingItems={clothingItems}
+            />
           </Route>
           <Route path="/profile">
             <Profile

@@ -33,7 +33,7 @@ function Main({ weatherTemp, onSelectCard, clothingItems }) {
 
   console.log(weatherType);
 
-  const filteredCards = clothingItems.filter((item) => {
+  const filteredCards = clothingItems?.filter((item) => {
     // console.log(item);
     return item.weather.toLowerCase() === weatherType;
   });
