@@ -17,7 +17,7 @@ export function getItems() {
 }
 
 // POST Items
-export function postItems({ name, imageUrl, weather }) {
+export function postItems({ name, link, weather }) {
     console.log(postItems)
   return fetch(`${baseUrl}/items`, {
     method: 'POST',
@@ -26,7 +26,7 @@ export function postItems({ name, imageUrl, weather }) {
     },
     body: JSON.stringify({
       name,
-      imageUrl,
+      link,
       weather,
     }),
   }).then(checkResponse);
