@@ -1,5 +1,6 @@
 import React from "react";
 import ItemCard from "../ItemCard/itemCard";
+import "./ClothesSection.css";
 
 const ClothesSection = ({onSelectCard, onCreateModal, clothingItems}) => {
     return (
@@ -18,7 +19,7 @@ const ClothesSection = ({onSelectCard, onCreateModal, clothingItems}) => {
             {clothingItems.map((item) => {
                 console.log(clothingItems)
               return (
-                <ItemCard key={item.id} item={item} onSelectCard={onSelectCard} />
+                <ItemCard key={item._id} item={item} onSelectCard={onSelectCard} />
               );
             })}
           </div>

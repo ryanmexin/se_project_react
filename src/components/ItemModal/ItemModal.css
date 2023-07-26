@@ -59,8 +59,29 @@
   line-height: 24px;
   letter-spacing: 0em;
   text-align: left;
+  display: grid;
+  grid-template-areas:
+    "a b"
+    "c d";
 }
 
 .modal__title {
   padding-bottom: 20px;
+}
+
+.modal__button-delete {
+  border: none;
+  background-color: #fff;
+  color: #ff4d00;
+  font-family: "Familjen Grotesk", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  height: 24px;
+  display: flex;
+  align-self: flex-end;
+  margin-bottom: 32px;
+  cursor: pointer;
+  display: grid;
+  justify-content: flex-end;
+  grid-area: b;
 }
