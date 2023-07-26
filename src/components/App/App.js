@@ -31,9 +31,6 @@ function App() {
     setActiveModal("");
   };
 
-  const onAddItem = (values) => {
-    console.log(values);
-  };
 
   const handleSelectedCard = (card) => {
     setActiveModal("preview");
@@ -113,7 +110,6 @@ function App() {
             handleCloseModal={handleCloseModal}
             handleAddItemSubmit={handleAddItemSubmit}
             isOpen={activeModal === "create"}
-            onAddItem={onAddItem}
           />
         )}
 
