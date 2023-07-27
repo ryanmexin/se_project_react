@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3001'; 
+const baseUrl = "http://localhost:3001";
 
 const checkResponse = (res) => {
   if (res.ok) {
@@ -11,23 +11,23 @@ const checkResponse = (res) => {
 export function getItems() {
   return fetch(`${baseUrl}/items`, {
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
   }).then(checkResponse);
 }
 
 // POST Items
-export function postItems({ name, link, weather }) {
-    console.log(postItems)
+export function postItems({ name, link, weatherType }) {
+  console.log(postItems);
   return fetch(`${baseUrl}/items`, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
       name,
       link,
-      weather,
+      weatherType,
     }),
   }).then(checkResponse);
 }
@@ -35,9 +35,9 @@ export function postItems({ name, link, weather }) {
 // DELETE Items
 export function deleteItems(id) {
   return fetch(`${baseUrl}/items/${id}`, {
-    method: 'DELETE',
+    method: "DELETE",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
   }).then(checkResponse);
 }
