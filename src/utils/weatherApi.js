@@ -26,10 +26,15 @@ export const parseWeatherData = (data) => {
   const main = data.main;
   // console.log(main);
   const temperature = main && main.temp;
-  const weather = {temperature: {F: Math.round(temperature), C: Math.round((temperature -32) * 5/9)}}
+  const weather = {
+    temperature: {
+      F: Math.round(temperature),
+      C: Math.round(((temperature - 32) * 5) / 9),
+    },
+  };
   console.log(weather);
   return weather;
 };
 
 // weather.temperature.F = `${Math.round(data.main.temp)}°F`;
-// weather.temperature.C = `${Math.round((data.main.temp - 32) * 5/9)}°C`; 
+// weather.temperature.C = `${Math.round((data.main.temp - 32) * 5/9)}°C`;

@@ -31,27 +31,20 @@
   top: 3px;
   left: 4px;
 }
-.switch__temp-C{
-    position: absolute;
-    left: 40px;
-    top: -14px;
-    color: white;
-
-   
-  }
-
-  .switch__temp-F{
-    position: absolute;
-    top: -14px;
-    left: 14px;
-    color: white;
-
-}
-  
-.switch__active{
-    color:white;
-   
+.switch__temp-C {
+  position: absolute;
+  left: 40px;
+  top: -14px;
+  color: white;
 }
 
+.switch__temp-F {
+  position: absolute;
+  top: -14px;
+  left: 14px;
+  color: white;
+}
 
-
+.switch__active {
+  color: white;
+}

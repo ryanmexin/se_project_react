@@ -1,6 +1,6 @@
-import React from 'react';
-import avatar from '../../images/avatar.svg';
-import './SideBar.css';
+import React from "react";
+import avatar from "../../images/avatar.svg";
+import "./SideBar.css";
 
 const SideBar = () => {
   return (

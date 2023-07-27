@@ -14,8 +14,8 @@ const Header = ({ onCreateModal }) => {
     <header className="header">
       <div className="header__logo">
         <div>
-          <Link to="/" >
-          <img src={logo} alt="logo" />
+          <Link to="/">
+            <img src={logo} alt="logo" />
           </Link>
         </div>
         <div>{currentDate}</div>
@@ -27,7 +27,9 @@ const Header = ({ onCreateModal }) => {
             + Add Clothes
           </button>
         </div>
-        <Link to= "/profile" className="nav__name">Ryan Mexin</Link>
+        <Link to="/profile" className="nav__name">
+          Ryan Mexin
+        </Link>
         <div>
           <img src={avatarImage} alt="avatar" />
         </div>

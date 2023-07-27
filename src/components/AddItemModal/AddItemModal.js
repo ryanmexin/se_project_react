@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ModalWithForm from "../components/ModalWithForm/ModalWIthForm";
+import ModalWithForm from "../ModalWithForm/ModalWIthForm";
 
 const AddItemModal = ({ handleCloseModal, handleAddItemSubmit, isOpen }) => {
   const [name, setName] = useState("");
@@ -65,12 +65,13 @@ const AddItemModal = ({ handleCloseModal, handleAddItemSubmit, isOpen }) => {
         <div className="weather__selections">
           <div>
             {" "}
-            <input className="form__input" 
-            type="radio" 
-            id="hot" 
-            value="hot"
-            name="weatherType"
-            onChange={handleWeatherType}
+            <input
+              className="form__input"
+              type="radio"
+              id="hot"
+              value="hot"
+              name="weatherType"
+              onChange={handleWeatherType}
             />
             <label>
               <span>Hot</span>

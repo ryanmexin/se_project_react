@@ -1,4 +1,5 @@
-const baseUrl = "https://my-json-server.typicode.com/ryanmexin/se_project_react";
+const baseUrl =
+  "https://my-json-server.typicode.com/ryanmexin/se_project_react";
 
 const checkResponse = (res) => {
   if (res.ok) {

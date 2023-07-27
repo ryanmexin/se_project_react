@@ -89,18 +89,6 @@
       "weather": "hot",
       "link": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09",
       "id": 17
-    },
-    {
-      "name": "Chicago",
-      "link": "https://free-images.com/lg/7ff0/chicago_bean_bean_arts.jpg",
-      "weather": "hot",
-      "id": 18
-    },
-    {
-      "name": "Chicago",
-      "link": "https://free-images.com/lg/7ff0/chicago_bean_bean_arts.jpg",
-      "weather": "hot",
-      "id": 19
     }
   ]
 }

@@ -13,8 +13,8 @@ import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperature
 import Profile from "../Profile/Profile";
 import { Switch, Route } from "react-router-dom";
 import { defaultClothingItems } from "../../utils/constants";
-import AddItemModal from "../../AddItemModal/AddItemModal";
-import { deleteItems, getItems, postItems } from '../../utils/Api';
+import AddItemModal from "../AddItemModal/AddItemModal";
+import { deleteItems, getItems, postItems } from "../../utils/Api";
 
 // rendering the header the weather card and the card clothing section
 function App() {
@@ -25,7 +25,7 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
 
   const closeModal = () => {
-    setActiveModal('');
+    setActiveModal("");
   };
 
   const handleCreateModal = () => {
@@ -34,7 +34,6 @@ function App() {
   const handleCloseModal = () => {
     setActiveModal("");
   };
-
 
   const handleSelectedCard = (card) => {
     setActiveModal("preview");
@@ -51,12 +50,10 @@ function App() {
       });
   }, []);
 
-
-
   const handleAddItemSubmit = (values) => {
     postItems(values)
       .then((data) => {
-        setClothingItems([data, ...clothingItems])
+        setClothingItems([data, ...clothingItems]);
         handleCloseModal();
       })
       .catch((error) => {
@@ -64,20 +61,19 @@ function App() {
       });
   };
 
-
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
   };
 
   const handleDeleteCard = (cardElement) => {
-    console.log(cardElement)
+    console.log(cardElement);
     deleteItems(cardElement)
       .then(() => {
         const newClothesList = clothingItems.filter((cards) => {
           return cards.id !== cardElement;
         });
-       console.log(newClothesList)
+        console.log(newClothesList);
         setClothingItems(newClothesList);
         closeModal();
       })
@@ -85,8 +81,6 @@ function App() {
         console.log(err);
       });
   };
-
-  
 
   useEffect(() => {
     getForcastWeather()
@@ -111,9 +105,10 @@ function App() {
         <Header onCreateModal={handleCreateModal} />
         <Switch>
           <Route exact path="/">
-            <Main weatherTemp={temp} 
-            onSelectCard={handleSelectedCard}
-            clothingItems={clothingItems}
+            <Main
+              weatherTemp={temp}
+              onSelectCard={handleSelectedCard}
+              clothingItems={clothingItems}
             />
           </Route>
           <Route path="/profile">
@@ -134,9 +129,10 @@ function App() {
         )}
 
         {activeModal === "preview" && (
-          <ItemModal selectedCard={selectedCard} 
-          onClose={handleCloseModal} 
-          handleDeleteCard ={handleDeleteCard}
+          <ItemModal
+            selectedCard={selectedCard}
+            onClose={handleCloseModal}
+            handleDeleteCard={handleDeleteCard}
           />
         )}
       </CurrentTemperatureUnitContext.Provider>
