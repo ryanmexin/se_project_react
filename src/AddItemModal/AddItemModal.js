@@ -14,7 +14,7 @@ const AddItemModal = ({ handleCloseModal, handleAddItemSubmit, isOpen }) => {
     setUrl(e.target.value);
   };
 
-  const [weatherType, setWeatherType] = useState("");
+  const [weather, setWeatherType] = useState("");
   const handleWeatherType = (e) => {
     console.log(e.target.value);
     setWeatherType(e.target.value);
@@ -22,7 +22,7 @@ const AddItemModal = ({ handleCloseModal, handleAddItemSubmit, isOpen }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleAddItemSubmit({ name, link, weatherType });
+    handleAddItemSubmit({ name, link, weather });
   };
 
   return (

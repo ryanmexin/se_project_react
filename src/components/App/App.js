@@ -24,6 +24,10 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
 
+  const closeModal = () => {
+    setActiveModal('');
+  };
+
   const handleCreateModal = () => {
     setActiveModal("create");
   };
@@ -64,6 +68,22 @@ function App() {
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
+  };
+
+  const handleDeleteCard = (cardElement) => {
+    console.log(cardElement)
+    deleteItems(cardElement)
+      .then(() => {
+        const newClothesList = clothingItems.filter((cards) => {
+          return cards.id !== cardElement;
+        });
+       console.log(newClothesList)
+        setClothingItems(newClothesList);
+        closeModal();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   
@@ -114,7 +134,10 @@ function App() {
         )}
 
         {activeModal === "preview" && (
-          <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
+          <ItemModal selectedCard={selectedCard} 
+          onClose={handleCloseModal} 
+          handleDeleteCard ={handleDeleteCard}
+          />
         )}
       </CurrentTemperatureUnitContext.Provider>
     </div>

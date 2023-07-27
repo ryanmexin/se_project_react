@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3001";
+const baseUrl = "https://my-json-server.typicode.com/ryanmexin/se_project_react";
 
 const checkResponse = (res) => {
   if (res.ok) {
@@ -17,7 +17,7 @@ export function getItems() {
 }
 
 // POST Items
-export function postItems({ name, link, weatherType }) {
+export function postItems({ name, link, weather }) {
   console.log(postItems);
   return fetch(`${baseUrl}/items`, {
     method: "POST",
@@ -27,7 +27,7 @@ export function postItems({ name, link, weatherType }) {
     body: JSON.stringify({
       name,
       link,
-      weatherType,
+      weather,
     }),
   }).then(checkResponse);
 }

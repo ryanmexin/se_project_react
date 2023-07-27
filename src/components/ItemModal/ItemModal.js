@@ -1,6 +1,6 @@
 import "./ItemModal.css";
 
-const ItemModal = ({ selectedCard, onClose }) => {
+const ItemModal = ({ selectedCard, onClose,handleDeleteCard }) => {
   console.log("item modal");
 
   return (
@@ -19,7 +19,8 @@ const ItemModal = ({ selectedCard, onClose }) => {
           </div>
           <button
           className="modal__button-delete"
-          type="button">
+          type="button"
+          onClick={() => handleDeleteCard(selectedCard.id)}>
             Delete Item
           </button>
 
