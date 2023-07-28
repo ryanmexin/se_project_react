@@ -24,9 +24,7 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
 
-  const closeModal = () => {
-    setActiveModal("");
-  };
+
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -75,7 +73,7 @@ function App() {
         });
         console.log(newClothesList);
         setClothingItems(newClothesList);
-        closeModal();
+        handleCloseModal();
       })
       .catch((err) => {
         console.log(err);
@@ -98,7 +96,6 @@ function App() {
   console.log(currentTemperatureUnit);
 
   return (
-    <div>
       <CurrentTemperatureUnitContext.Provider
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
@@ -136,7 +133,7 @@ function App() {
           />
         )}
       </CurrentTemperatureUnitContext.Provider>
-    </div>
+    
   );
 }
 

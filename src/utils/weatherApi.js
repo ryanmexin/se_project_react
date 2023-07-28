@@ -1,21 +1,15 @@
 //https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIkey}
 
+import { checkResponse } from "./Api";
 import { latitude } from "./constants";
 import { longitude } from "./constants";
 import { APIkey } from "./constants";
-
-const processServerResponse = (res) => {
-  if (res.ok) {
-    return res.json();
-  }
-  return Promise.reject(`Error: ${res.status}`);
-};
 
 export const getForcastWeather = () => {
   const weatherApi = fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIkey}`
   )
-    .then(processServerResponse)
+    .then(checkResponse)
     .catch((error) => {
       console.log(error);
     });

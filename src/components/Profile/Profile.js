@@ -5,16 +5,14 @@ import "./Profile.css";
 
 const Profile = ({ onSelectCard, onCreateModal, clothingItems }) => {
   return (
-    <>
-      <div className="profile">
-        <SideBar />
-        <ClothesSection
-          onSelectCard={onSelectCard}
-          onCreateModal={onCreateModal}
-          clothingItems={clothingItems}
-        />
-      </div>
-    </>
+    <div className="profile">
+      <SideBar />
+      <ClothesSection
+        onSelectCard={onSelectCard}
+        onCreateModal={onCreateModal}
+        clothingItems={clothingItems}
+      />
+    </div>
   );
 };
 
