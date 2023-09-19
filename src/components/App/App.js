@@ -12,9 +12,13 @@ import { parseWeatherData } from "../../utils/weatherApi";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import Profile from "../Profile/Profile";
 import { Switch, Route } from "react-router-dom";
-import { defaultClothingItems } from "../../utils/constants";
+//import { defaultClothingItems } from "../../utils/constants";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import { deleteItems, getItems, postItems } from "../../utils/Api";
+import { register, signIn, checkToken } from "../../utils/auth";
+import RegisterModal from "../../components/RegisterModal/RegisterModal";
+import LoginModal from "../../components/LoginModal/LoginModal";
+
 
 // rendering the header the weather card and the card clothing section
 function App() {
@@ -80,6 +84,45 @@ function App() {
       });
   };
 
+  const handleRegistration = () => {
+    const { email, password, name, avatar } = this.state; // Assuming you have these values in the component's state
+    register(email, password, name, avatar)
+      .then(() => {
+        // Registration successful, set the loggedIn state and close the modal
+        this.setState({
+          loggedIn: true,
+        });
+        handleCloseModal();
+      })
+      .catch((error) => {
+        console.error(error);
+        // Handle registration error here
+      });
+  };
+  
+  const handleLogin = (email, password) => {
+    signIn(email, password)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.jwt) {
+          localStorage.setItem("jwt", data.jwt);
+          // Successfully logged in
+          this.setState({
+            loggedIn: true,
+          });
+          handleCloseModal();
+        } else {
+          // Handle login failure
+          console.error("Login failed.");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        // Handle login error here
+      });
+  };
+  
+
   useEffect(() => {
     getForcastWeather()
       .then((data) => {
@@ -89,6 +132,10 @@ function App() {
       .catch((err) => {
         console.error(err);
       });
+  }, []);
+
+  useEffect(() => {
+    checkToken().then((jwt) => {});
   }, []);
 
   console.log(temp);
@@ -130,6 +177,20 @@ function App() {
             selectedCard={selectedCard}
             onClose={handleCloseModal}
             handleDeleteCard={handleDeleteCard}
+          />
+        )}
+         {activeModal === "create" && (
+          <RegisterModal
+            handleCloseModal={handleCloseModal}
+            isOpen={activeModal === "create"}
+            handleRegistration={handleRegistration}
+          />
+        )}
+        {activeModal === "login" && (
+          <LoginModal
+            handleCloseModal={handleCloseModal}
+            isOpen={activeModal === "login"}
+            handleLogin={handleLogin}
           />
         )}
       </CurrentTemperatureUnitContext.Provider>
