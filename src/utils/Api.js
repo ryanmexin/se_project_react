@@ -1,5 +1,9 @@
 const baseUrl = "http://localhost:3001";
 
+const getToken = () => {
+  return localStorage.getItem("jwt");
+};
+
 export const checkResponse = (res) => {
   if (res.ok) {
     return res.json();

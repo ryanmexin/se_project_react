@@ -3,7 +3,6 @@ import "./App.css";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Main from "../Main/Main";
-
 import { useState } from "react";
 import { useEffect } from "react";
 import ItemModal from "../ItemModal/ItemModal";
@@ -18,6 +17,9 @@ import { deleteItems, getItems, postItems } from "../../utils/Api";
 import { register, signIn, checkToken } from "../../utils/auth";
 import RegisterModal from "../../components/RegisterModal/RegisterModal";
 import LoginModal from "../../components/LoginModal/LoginModal";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import { AppContext } from "../AppContext";
 
 
 // rendering the header the weather card and the card clothing section
@@ -27,6 +29,10 @@ function App() {
   const [temp, setTemp] = useState(0);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
+  const [userData, setUserData] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const appContextValue = { state: { loggedIn, userData } };
 
 
 
@@ -85,7 +91,7 @@ function App() {
   };
 
   const handleRegistration = () => {
-    const { email, password, name, avatar } = this.state; // Assuming you have these values in the component's state
+    const { email, password, name, avatar } = this.state; 
     register(email, password, name, avatar)
       .then(() => {
         // Registration successful, set the loggedIn state and close the modal
@@ -135,7 +141,13 @@ function App() {
   }, []);
 
   useEffect(() => {
-    checkToken().then((jwt) => {});
+    checkToken().then((jwt) => {
+      if (localStorage.getItem(jwt)) {
+        console.log("Token Found: " + localStorage.getItem(jwt));
+      } else {
+        console.log("Token not Found");
+      }
+    });
   }, []);
 
   console.log(temp);
@@ -146,8 +158,12 @@ function App() {
       <CurrentTemperatureUnitContext.Provider
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
-        <Header onCreateModal={handleCreateModal} />
+        <CurrentUserContext.Provider value={currentUser} loggedIn = {this.state.loggedIn}>
+        <Header 
+        onCreateModal={handleCreateModal} 
+        />
         <Switch>
+          
           <Route exact path="/">
             <Main
               weatherTemp={temp}
@@ -155,13 +171,13 @@ function App() {
               clothingItems={clothingItems}
             />
           </Route>
-          <Route path="/profile">
+          <ProtectedRoute path="/profile">
             <Profile
               onCreateModal={handleCreateModal}
               clothingItems={clothingItems}
               onSelectCard={handleSelectedCard}
             ></Profile>
-          </Route>
+          </ProtectedRoute>
         </Switch>
         <Footer />
         {activeModal === "create" && (
@@ -193,6 +209,7 @@ function App() {
             handleLogin={handleLogin}
           />
         )}
+        </CurrentUserContext.Provider>
       </CurrentTemperatureUnitContext.Provider>
     
   );
