@@ -40,6 +40,16 @@ function App() {
   const handleCreateModal = () => {
     setActiveModal("create");
   };
+
+  const openSignUpModal= () => {
+    setActiveModal("signup");
+  };
+
+  const openLogInModal = () => {
+    setActiveModal("login");
+  };
+
+
   const handleCloseModal = () => {
     setActiveModal("");
   };
@@ -142,14 +152,13 @@ function App() {
   }, []);
 
   useEffect(() => {
-    checkToken().then((jwt) => {
-      if (localStorage.getItem(jwt)) {
-        console.log("Token Found: " + localStorage.getItem(jwt));
-      } else {
-        console.log("Token not Found");
-      }
-    });
-  }, []);
+   const token = localStorage.getItem('jwt');
+   if (token) {
+    checkToken(token);
+   } else {
+     console.log("Token not found");
+   }
+   }, []);
 
   console.log(temp);
 
@@ -161,9 +170,9 @@ function App() {
       >
         <CurrentUserContext.Provider value={currentUser} loggedIn = {loggedIn}>
         <AppContext.Provider value={appContextValue}>
-    
+        <Header onCreateModal={handleCreateModal} temp= {temp} />
         <Switch>
-          {loggedIn ? <Header onCreateModal={handleCreateModal} temp= {temp} /> : <UnAuthHeader onCreateModal={handleCreateModal} temp={temp}/>}
+          {loggedIn ? <Header onCreateModal={handleCreateModal} temp= {temp} /> : <UnAuthHeader onClickSignUp={openSignUpModal} onClickLogIn={openLogInModal}temp={temp}/>}
           <Route exact path="/">
             <Main
               weatherTemp={temp}
@@ -196,10 +205,10 @@ function App() {
             handleDeleteCard={handleDeleteCard}
           />
         )}
-         {activeModal === "create" && (
+         {activeModal === "signup" && (
           <RegisterModal
             handleCloseModal={handleCloseModal}
-            isOpen={activeModal === "create"}
+            isOpen={activeModal === "signup"}
             handleRegistration={handleRegistration}
           />
         )}

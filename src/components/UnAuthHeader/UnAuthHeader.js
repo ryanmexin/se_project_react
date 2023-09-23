@@ -4,7 +4,7 @@ import avatarImage from "../../images/avatar.svg";
 import logo from "../../images/Logo.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
-const UnAuthHeader = ({ onCreateModal }) => {
+const UnAuthHeader = ({ onClickSignUp, OnClickLogIn }) => {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -26,10 +26,10 @@ const UnAuthHeader = ({ onCreateModal }) => {
       <div className="header__avatar-logo">
         <ToggleSwitch />
         <div>
-        <button className="nav__button" type="text" onClick={onCreateModal}>
+        <button className="nav__button" type="text" onClick={onClickSignUp}>
             Sign Up
           </button>
-          <button className="nav__button" type="text" onClick={onCreateModal}>
+          <button className="nav__button" type="text" onClick={OnClickLogIn}>
             Log In
           </button>
         </div>
