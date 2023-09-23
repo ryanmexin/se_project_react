@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import "./Header.css";
+import "./UnAuthHeader.css";
 import avatarImage from "../../images/avatar.svg";
 import logo from "../../images/Logo.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
-const Header = ({ onCreateModal }) => {
+const UnAuthHeader = ({ onCreateModal }) => {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -26,19 +26,16 @@ const Header = ({ onCreateModal }) => {
       <div className="header__avatar-logo">
         <ToggleSwitch />
         <div>
-          <button className="nav__button" type="text" onClick={onCreateModal}>
-            + Add Clothes
+        <button className="nav__button" type="text" onClick={onCreateModal}>
+            Sign Up
           </button>
-        </div>
-        <Link to="/profile" className="nav__name">
-          Ryan Mexin
-        </Link>
-        <div>
-          <img src={avatarImage} alt="avatar" />
+          <button className="nav__button" type="text" onClick={onCreateModal}>
+            Log In
+          </button>
         </div>
       </div>
     </header>
   );
 };
 
-export default Header;
+export default UnAuthHeader;

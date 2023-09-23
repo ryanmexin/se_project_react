@@ -1,6 +1,7 @@
 //import logo from "./logo.svg";
 import "./App.css";
 import Header from "../Header/Header";
+import UnAuthHeader from "../UnAuthHeader/UnAuthHeader";
 import Footer from "../Footer/Footer";
 import Main from "../Main/Main";
 import { useState } from "react";
@@ -159,11 +160,10 @@ function App() {
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
         <CurrentUserContext.Provider value={currentUser} loggedIn = {loggedIn}>
-        <Header 
-        onCreateModal={handleCreateModal} 
-        />
+        <AppContext.Provider value={appContextValue}>
+    
         <Switch>
-          
+          {loggedIn ? <Header onCreateModal={handleCreateModal} temp= {temp} /> : <UnAuthHeader onCreateModal={handleCreateModal} temp={temp}/>}
           <Route exact path="/">
             <Main
               weatherTemp={temp}
@@ -171,6 +171,7 @@ function App() {
               clothingItems={clothingItems}
             />
           </Route>
+          
           <ProtectedRoute path="/profile">
             <Profile
               onCreateModal={handleCreateModal}
@@ -209,6 +210,7 @@ function App() {
             handleLogin={handleLogin}
           />
         )}
+        </AppContext.Provider>
         </CurrentUserContext.Provider>
       </CurrentTemperatureUnitContext.Provider>
     
