@@ -172,7 +172,7 @@ function App() {
         <AppContext.Provider value={appContextValue}>
         <Header onCreateModal={handleCreateModal} temp= {temp} />
         <Switch>
-          {loggedIn ? <Header onCreateModal={handleCreateModal} temp= {temp} /> : <UnAuthHeader onClickSignUp={openSignUpModal} onClickLogIn={openLogInModal}temp={temp}/>}
+          {loggedIn ? <Header onCreateModal={handleCreateModal} temp= {temp} /> : <UnAuthHeader onClickSignUp={openSignUpModal} OnClickLogIn={openLogInModal}temp={temp}/>}
           <Route exact path="/">
             <Main
               weatherTemp={temp}
