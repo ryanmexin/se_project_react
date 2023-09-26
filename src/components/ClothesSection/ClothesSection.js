@@ -1,8 +1,13 @@
+
+
 import React from "react";
 import ItemCard from "../ItemCard/itemCard";
 import "./ClothesSection.css";
 
-const ClothesSection = ({ onSelectCard, onCreateModal, clothingItems }) => {
+const ClothesSection = ({ onSelectCard, onCreateModal, clothingItems, currentUser }) => {
+  const isOwn = item.owner._id === currentUser._id;
+  const parsedCards = clothingItems.filter((item) => item.weather);
+  
   return (
     <div className="clothes__section">
       <div className="clothes__section-title-wrapper">
@@ -16,16 +21,13 @@ const ClothesSection = ({ onSelectCard, onCreateModal, clothingItems }) => {
         </button>
       </div>
       <div className="clothing__section-cards">
-        {clothingItems.map((item) => {
-          console.log(clothingItems);
-          return (
-            <ItemCard
-              key={item?._id || item?.id}
-              item={item}
-              onSelectCard={onSelectCard}
-            />
-          );
-        })}
+         {isOwn ? parsedCards.map((item) => (
+          <ItemCard
+            key={item.id} // Use item.id as the key
+            item={item}
+            onSelectCard={onSelectCard}
+          />
+        )):""}
       </div>
     </div>
   );

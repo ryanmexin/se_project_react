@@ -84,4 +84,11 @@
   display: grid;
   justify-content: flex-end;
   grid-area: b;
+  visibility: hidden;
+}
+
+.modal__button-delete_visible {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s, opacity 0.5s linear;
 }
