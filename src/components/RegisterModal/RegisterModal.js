@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import ModalWithForm from "../ModalWithForm/ModalWithForm2";
 import "./RegisterModal.css";
 
 const RegisterModal = ({ handleCloseModal, onRegister, isOpen }) => {
@@ -92,22 +92,22 @@ const RegisterModal = ({ handleCloseModal, onRegister, isOpen }) => {
         ></input>
       </label>
       <div className="button-container">
-      <button
-        className="modal__submit-button"
-        type="submit"
-        name="button"
-        onChange={handleSubmit}
-      >
-        Next
-      </button>
-      <button
-        className="modal__submit-login-button"
-        type="button"
-        name="button"
-        onChange={handleLogin}
-      >
-        or Login
-      </button>
+        <button
+          className="modal__submit-button"
+          type="submit"
+          name="button"
+          onChange={handleSubmit}
+        >
+          Next
+        </button>
+        <button
+          className="modal__submit-login-button"
+          type="button"
+          name="button"
+          onChange={handleLogin}
+        >
+          or Login
+        </button>
       </div>
     </ModalWithForm>
   );

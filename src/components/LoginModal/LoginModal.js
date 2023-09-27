@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import ModalWithForm from "../ModalWithForm/ModalWithForm2";
 import "./LoginModal.css";
 
 const LoginModal = ({ handleCloseModal, onLogin, isOpen }) => {
