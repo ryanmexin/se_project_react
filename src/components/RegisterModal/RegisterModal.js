@@ -4,7 +4,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./RegisterModal.css";
 import { register } from "../../utils/auth"
 
-const RegisterModal = ({ handleCloseModal, isOpen }) => {
+const RegisterModal = ({ handleCloseModal, isOpen, OnClickLogIn }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -106,6 +106,7 @@ const RegisterModal = ({ handleCloseModal, isOpen }) => {
           type="button"
           name="button"
           onChange={handleLogin}
+          onClick={OnClickLogIn}
         >
           or Log in
         </button>

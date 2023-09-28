@@ -212,6 +212,7 @@ function App() {
             handleCloseModal={handleCloseModal}
             isOpen={activeModal === "signup"}
             handleRegistration={handleRegistration}
+            OnClickLogIn={openLogInModal}
           />
         )}
         {activeModal === "login" && (
@@ -219,6 +220,7 @@ function App() {
             handleCloseModal={handleCloseModal}
             isOpen={activeModal === "login"}
             handleLogin={handleLogin}
+            onClickSignUp={openSignUpModal}
           />
         )}
         </AppContext.Provider>
