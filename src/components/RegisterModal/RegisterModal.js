@@ -99,7 +99,7 @@ const RegisterModal = ({ handleCloseModal, isOpen }) => {
           name="button"
           onChange={handleSubmit}
         >
-          or Register
+          Next
         </button>
         <button
           className= "modal__form-button"
@@ -107,7 +107,7 @@ const RegisterModal = ({ handleCloseModal, isOpen }) => {
           name="button"
           onChange={handleLogin}
         >
-          Log in
+          or Log in
         </button>
       </div>
     </ModalWithForm>

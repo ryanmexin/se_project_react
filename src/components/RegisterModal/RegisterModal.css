@@ -99,7 +99,22 @@
 
   .button-container{
     display: flex;
+    justify-content: left;
+    flex-direction: initial;
+    gap: 25px;
   }
+
+  .modal__form-button {
+  border-radius: 3px;
+  width: 124px;
+  height: 36px;
+  left: 28px;
+  bottom: 36px;
+  background: rgba(0, 0, 0, 1);
+  border-style: none;
+  color: rgba(255, 255, 255, 1);
+  cursor: pointer;
+}
   
   .modal__button-delete {
     border: none;
