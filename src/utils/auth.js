@@ -14,7 +14,7 @@ export const checkToken = (token) => {
 
 // signup
 export const signUp = ({ name, avatar, email, password }, token) => {
-  fetch(`${baseUrl}/signup`, {
+  fetch(`${baseUrl}/signUp`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -36,6 +36,10 @@ export const signIn = ({ email, password }, token) => {
 
 // register
 export const register = (email, password, name, avatar, token) => {
+  console.log(email)
+  console.log(password)
+  console.log(name)
+  console.log(avatar)
   return fetch(`${baseUrl}/signUp`, {
     method: "POST",
     headers: {

@@ -27,7 +27,7 @@ const RegisterModal = ({ handleCloseModal, isOpen, OnClickLogIn }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    register({ email, password, name, avatar });
+    register( email, password, name, avatar );
   };
   const handleLogin = (e) => {
     e.preventDefault();
