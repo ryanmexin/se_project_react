@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./RegisterModal.css";
+import { register } from "../../utils/auth"
 
-const RegisterModal = ({ handleCloseModal, onRegister, isOpen }) => {
+const RegisterModal = ({ handleCloseModal, isOpen }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -26,7 +27,7 @@ const RegisterModal = ({ handleCloseModal, onRegister, isOpen }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    onRegister({ email, password, name, avatar });
+    register({ email, password, name, avatar });
   };
   const handleLogin = (e) => {
     e.preventDefault();
@@ -98,15 +99,15 @@ const RegisterModal = ({ handleCloseModal, onRegister, isOpen }) => {
           name="button"
           onChange={handleSubmit}
         >
-          Next
+          or Register
         </button>
         <button
-          className="modal__submit-login-button"
+          className= "modal__form-button"
           type="button"
           name="button"
           onChange={handleLogin}
         >
-          or Login
+          Log in
         </button>
       </div>
     </ModalWithForm>

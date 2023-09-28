@@ -99,16 +99,11 @@ const AddItemModal = ({ handleCloseModal, handleAddItemSubmit, isOpen }) => {
               name="weatherType"
               onChange={handleWeatherType}
             />
-            <label>Cold</label>
+            <label>Coldddddd</label>
           </div>
-          <button
-        className="modal__submit-button"
-        type="submit"
-        name="button"
-        onChange={handleSubmit}
-      >
-        Login
-      </button>
+          <button className="modal__form-button" type="submit">
+            Add Garment
+          </button>
         </div>
       </div>
     </ModalWithForm>

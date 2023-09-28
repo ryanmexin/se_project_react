@@ -4,7 +4,7 @@ import React from "react";
 import ItemCard from "../ItemCard/itemCard";
 import "./ClothesSection.css";
 
-const ClothesSection = ({ onSelectCard, onCreateModal, clothingItems, currentUser }) => {
+const ClothesSection = ({ onSelectCard, onCreateModal, clothingItems }, item, currentUser) => {
   const isOwn = item.owner._id === currentUser._id;
   const parsedCards = clothingItems.filter((item) => item.weather);
   
