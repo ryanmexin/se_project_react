@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import "./UnAuthHeader.css";
 import avatarImage from "../../images/avatar.svg";
-import logo from "../../images/Logo.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
 const UnAuthHeader = ({ onClickSignUp, OnClickLogIn }) => {
@@ -18,7 +17,7 @@ const UnAuthHeader = ({ onClickSignUp, OnClickLogIn }) => {
       <div className="header__logo">
         <div>
           <Link to="/">
-            <img src={logo} alt="logo" />
+            <img src={avatarImage} alt="logo" />
           </Link>
         </div>
         <div>{currentDate}</div>

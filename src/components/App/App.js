@@ -109,6 +109,9 @@ function App() {
         this.setState({
           loggedIn: true,
         });
+        setLoggedIn();
+        setUserData();
+        setCurrentUser();
         handleCloseModal();
       })
       .catch((error) => {
