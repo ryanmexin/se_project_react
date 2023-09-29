@@ -33,6 +33,7 @@ function App() {
   const [userData, setUserData] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
   const [loggedIn, setLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const appContextValue = { state: { loggedIn, userData } };
 
 
@@ -127,9 +128,8 @@ function App() {
         if (data.jwt) {
           localStorage.setItem("jwt", data.jwt);
           // Successfully logged in
-          this.setState({
-            loggedIn: true,
-          });
+          setLoggedIn(true);
+          setCurrentUser();
           handleCloseModal();
         } else {
           // Handle login failure
@@ -158,7 +158,11 @@ function App() {
    const token = localStorage.getItem('jwt');
    if (token) {
     checkToken(token);
+    setIsLoggedIn(true)
+    setCurrentUser();
    } else {
+    localStorage.removeItem("jwt");
+    setIsLoggedIn(false);
      console.log("Token not found");
    }
    }, []);
@@ -174,7 +178,7 @@ function App() {
         <CurrentUserContext.Provider value={currentUser} loggedIn = {loggedIn}>
         <AppContext.Provider value={appContextValue}>
         
-          {loggedIn ? <Header onCreateModal={handleCreateModal} temp= {temp} /> : <UnAuthHeader onClickSignUp={openSignUpModal} OnClickLogIn={openLogInModal}temp={temp}/>}
+          {loggedIn ? <Header onCreateModal={handleCreateModal} temp= {temp} user= {currentUser}/> : <UnAuthHeader onClickSignUp={openSignUpModal} OnClickLogIn={openLogInModal}temp={temp}/>}
           <Switch>
           <Route exact path="/">
             <Main

@@ -1,4 +1,7 @@
+import { checkResponse } from "./Api";
+
 const baseUrl = "http://localhost:3001";
+
 
 // check token
 export const checkToken = (token) => {
@@ -10,6 +13,18 @@ export const checkToken = (token) => {
      }
    });
    };
+
+   export const getUserDetail = (token) => {
+    const url = `${baseUrl}/users/me`;
+    console.log("URL:", url);
+    console.log("Token:", token);
+    return fetch(url, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then(checkResponse);
+  };
 
 
 // signup
