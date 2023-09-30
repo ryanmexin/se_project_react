@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./LoginModal.css";
-import { signIn } from "../../utils/auth";
 
-const LoginModal = ({ handleCloseModal, isOpen, onClickSignUp}) => {
+
+const LoginModal = ({ handleCloseModal, isOpen, onClickSignUp, handleLogin}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -19,7 +19,7 @@ const LoginModal = ({ handleCloseModal, isOpen, onClickSignUp}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    signIn({ email, password });
+    handleLogin({ email, password });
   };
   const handleRegister = (e) => {
     e.preventDefault();

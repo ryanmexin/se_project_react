@@ -126,8 +126,8 @@ function App() {
     signIn(email, password)
       .then((response) => response.json())
       .then((data) => {
-        if (data.jwt) {
-          localStorage.setItem("jwt", data.jwt);
+        if (data.token) {
+          localStorage.setItem("jwt", data.token);
           // Successfully logged in
           setLoggedIn(true);
           setCurrentUser();
