@@ -1,14 +1,21 @@
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 import avatarImage from "../../images/avatar.svg";
 import logo from "../../images/Logo.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const Header = ({ onCreateModal }) => {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
+  const currentUser = useContext(CurrentUserContext);
+  const Avatar = currentUser ? currentUser.avatar : "";
+  const Name = currentUser ? currentUser.name : "";
+  const showAvatar = Avatar !== "" ? true : false;
+
 
 
 
@@ -31,10 +38,14 @@ const Header = ({ onCreateModal }) => {
           </button>
         </div>
         <Link to="/profile" className="nav__name">
-          Ryan Mexin
+          {Name}
         </Link>
         <div>
-          <img src={avatarImage} alt="avatar" />
+        {showAvatar ? (
+                      <img className="sidebar__avatar" src={Avatar} alt="avatar" />
+                    ) : (
+                      <p className="sidebar__avatar-placeholder">{Name[0]?.toUpperCase()}</p>
+                    )}
         </div>
       </div>
     </header>

@@ -103,17 +103,16 @@ function App() {
       });
   };
 
-  const handleRegistration = () => {
-    const { email, password, name, avatar } = this.state; 
-    register(email, password, name, avatar)
-      .then(() => {
+  const handleRegistration = ({email, password, name, avatar}) => {
+    register({email: email, password: password, name: name, avatar: avatar})
+      .then((res) => {
         // Registration successful, set the loggedIn state and close the modal
         this.setState({
           loggedIn: true,
         });
-        setLoggedIn();
-        setUserData();
-        setCurrentUser();
+        setCurrentUser(res);
+        handleLogin({email, password})
+        setLoggedIn(true);
         handleCloseModal();
       })
       .catch((error) => {
@@ -126,11 +125,12 @@ function App() {
     signIn(email, password)
       .then((response) => response.json())
       .then((data) => {
+        console.log("API Response:", data);
         if (data.token) {
           localStorage.setItem("jwt", data.token);
           // Successfully logged in
           setLoggedIn(true);
-          setCurrentUser();
+          setCurrentUser(data);
           handleCloseModal();
         } else {
           // Handle login failure
