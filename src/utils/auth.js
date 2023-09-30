@@ -45,13 +45,16 @@ export const signUp = ({ name, avatar, email, password }, token) => {
 };
 
 // signin
-export const signIn = ({ email, password }, token) => {
-  fetch(`${baseUrl}/signIn`, {
+export const signIn = ( email, password ) => {
+  console.log(email)
+  console.log(password)
+  
+  return fetch(`${baseUrl}/signIn`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ email, password }, token),
+    body: JSON.stringify( {email, password}),
   });
 };
 
