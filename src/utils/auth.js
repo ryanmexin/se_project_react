@@ -5,14 +5,20 @@ const baseUrl = "http://localhost:3001";
 
 // check token
 export const checkToken = (token) => {
-    return fetch(`${baseUrl}/local`, {
+    return fetch(`${baseUrl}/user/me`, {
      method: "GET",
      headers: {
        "Content-Type": "application/json",
        authorization: `Bearer ${token}`,
-     }
-   });
-   };
+      },
+    }).then((response) => {
+      if (response.ok) {
+        return response.json(); // Resolve the promise with JSON data if the response is successful
+      } else {
+        throw new Error(`Token validation failed: ${response.status}`);
+      }
+    });
+  };
 
    export const getUserDetail = (token) => {
     const url = `${baseUrl}/users/me`;

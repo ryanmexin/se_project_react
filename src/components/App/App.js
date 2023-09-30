@@ -21,6 +21,7 @@ import LoginModal from "../../components/LoginModal/LoginModal";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { AppContext } from "../AppContext";
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
 
 
 // rendering the header the weather card and the card clothing section
@@ -142,6 +143,9 @@ function App() {
       });
   };
   
+  const handleUpdate = (name, avatar) => {
+
+  }
 
   useEffect(() => {
     getForcastWeather()
@@ -158,8 +162,9 @@ function App() {
    const token = localStorage.getItem('jwt');
    if (token) {
     checkToken(token);
-    setIsLoggedIn(true)
     setCurrentUser();
+    setIsLoggedIn(true);
+    
    } else {
     localStorage.removeItem("jwt");
     setIsLoggedIn(false);
@@ -226,6 +231,13 @@ function App() {
             isOpen={activeModal === "login"}
             handleLogin={handleLogin}
             onClickSignUp={openSignUpModal}
+          />
+        )}
+        {activeModal === "update" && (
+          <EditProfileModal
+            handleCloseModal={handleCloseModal}
+            isOpen={activeModal === "update"}
+            handleUpdate={handleUpdate}
           />
         )}
         </AppContext.Provider>
