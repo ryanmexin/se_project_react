@@ -161,16 +161,22 @@ function App() {
   useEffect(() => {
    const token = localStorage.getItem('jwt');
    if (token) {
-    checkToken(token);
-    setCurrentUser();
-    setIsLoggedIn(true);
-    
+    checkToken(token)
+    .then((data) => {
+      console.log(data)
+      setCurrentUser(data); // Set the user data in your component state
+      setIsLoggedIn(true);
+    })
+    .catch((error) => {
+      console.error("Error fetching user data:", error);
+      // Handle error fetching user data here
+    });
    } else {
     localStorage.removeItem("jwt");
     setIsLoggedIn(false);
      console.log("Token not found");
    }
-   }, []);
+   }, [loggedIn]);
 
   console.log(temp);
 
