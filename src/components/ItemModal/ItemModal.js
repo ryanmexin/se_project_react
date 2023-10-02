@@ -9,10 +9,10 @@ const ItemModal = ({ selectedCard, onClose, handleDeleteCard }) => {
   const { currentUser } = useContext(CurrentUserContext);
 
   // Checking if the current user is the owner of the current clothing item
-  const isOwn = selectedCard.owner._id === currentUser._id;
+ // const isOwn = selectedCard.owner.id === currentUser.id;
 
   // Creating a variable which you'll then set in `className` for the delete button
-  const modalDeleteClass = `modal__button-delete ${isOwn ? 'modal__button-delete_visible' : 'modal__button-delete_hidden'}`;
+ // const modalDeleteClass = `modal__button-delete ${isOwn ? 'modal__button-delete_visible' : 'modal__button-delete_hidden'}`;
 
   return (
     <div className="modal">
@@ -33,7 +33,7 @@ const ItemModal = ({ selectedCard, onClose, handleDeleteCard }) => {
             Weather Type: {selectedCard.weather}
           </div>
           <button
-            className={modalDeleteClass}
+            //className={modalDeleteClass}
             type="button"
             onClick={() => handleDeleteCard(selectedCard.id)}
           >

@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import avatar from "../../images/avatar.svg";
 import "./SideBar.css";
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
 
 const SideBar = ({onSignOut, onEditModal}) => {
   const currentUser = useContext(CurrentUserContext);
@@ -25,7 +26,7 @@ const SideBar = ({onSignOut, onEditModal}) => {
       />
       <p className="sidebar__avatar-name">{Name}</p>
       <div className="sidebar__container-buttons">
-        <button className="side__container-button" type="button" onClick={onEditModal}>
+        <button className="side__container-button" type="button" onClick={EditProfileModal}>
           Change profile data
         </button>
         <button className="side__container-button" type="button" onClick={signUserOut}>

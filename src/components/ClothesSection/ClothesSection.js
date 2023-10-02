@@ -2,10 +2,11 @@
 
 import React from "react";
 import ItemCard from "../ItemCard/itemCard";
+
 import "./ClothesSection.css";
 
 const ClothesSection = ({ onSelectCard, onCreateModal, clothingItems }, item, currentUser) => {
-  const isOwn = item.owner._id === currentUser._id;
+  const isOwn = item.owner?._id === currentUser?._id;
   const parsedCards = clothingItems.filter((item) => item.weather);
   
   return (
@@ -34,3 +35,6 @@ const ClothesSection = ({ onSelectCard, onCreateModal, clothingItems }, item, cu
 };
 
 export default ClothesSection;
+
+
+

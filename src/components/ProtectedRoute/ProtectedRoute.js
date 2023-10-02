@@ -5,15 +5,16 @@ import { AppContext } from "../AppContext";
 const ProtectedRoute = ({ component: Component, ...props }) => {
   const value = React.useContext(AppContext);
   return (
-    <Route>
-      {() =>
-        value.state.loggedIn === true ? (
-          <Component {...props} userData={value.state.userData} />
+    <Route
+      {...props}
+      render={(props) =>
+        value && value.state.loggedIn === true ? (
+          <Component {...props} />
         ) : (
-          <Redirect to="./login" />
+          <Redirect to="/" />
         )
       }
-    </Route>
+    />
   );
 };
 

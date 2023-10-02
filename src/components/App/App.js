@@ -224,6 +224,7 @@ function App() {
               onCreateModal={handleCreateModal}
               clothingItems={clothingItems}
               onSelectCard={handleSelectedCard}
+              onEditModal={handleEditProfile}
               onSignOut={handleLogout}
               isLoading={isLoading}
             ></Profile>
@@ -264,14 +265,15 @@ function App() {
             isLoading={isLoading}
           />
         )}
-        {activeModal === "update" && (
-          <EditProfileModal
-            handleCloseModal={handleCloseModal}
-            isOpen={activeModal === "update"}
-            handleUpdate={handleUpdate}
-            isLoading={isLoading}
-          />
-        )}
+        {activeModal === "edit" && (
+  <EditProfileModal
+    handleCloseModal={handleCloseModal}
+    isOpen={activeModal === "edit"}
+    currentUser={currentUser} // Pass currentUser inside the object
+    handleUopdate={handleEditProfile}
+    isLoading={isLoading}
+  />
+)}
         {redirectToProfile && <Redirect to="/profile" />}
         </AppContext.Provider>
         </CurrentUserContext.Provider>
