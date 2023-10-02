@@ -11,10 +11,10 @@ import { getForcastWeather } from "../../utils/weatherApi";
 import { parseWeatherData } from "../../utils/weatherApi";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import Profile from "../Profile/Profile";
-import { Switch, Route } from "react-router-dom";
+import { Redirect, Switch, Route } from "react-router-dom";
 //import { defaultClothingItems } from "../../utils/constants";
 import AddItemModal from "../AddItemModal/AddItemModal";
-import { deleteItems, getItems, postItems } from "../../utils/Api";
+import { deleteItems, getItems, postItems, editUserProfile } from "../../utils/Api";
 import { register, signIn, checkToken } from "../../utils/auth";
 import RegisterModal from "../../components/RegisterModal/RegisterModal";
 import LoginModal from "../../components/LoginModal/LoginModal";
@@ -33,9 +33,12 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const [userData, setUserData] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const appContextValue = { state: { loggedIn, userData } };
+  const [redirectToProfile, setRedirectToProfile] = useState(false);
+  //const [token, setToken] = React.useState("");
 
 
 
@@ -132,6 +135,7 @@ function App() {
           setLoggedIn(true);
           setCurrentUser(data);
           handleCloseModal();
+          setRedirectToProfile(true);
         } else {
           // Handle login failure
           console.error("Login failed.");
@@ -146,6 +150,22 @@ function App() {
   const handleUpdate = (name, avatar) => {
 
   }
+
+
+  const handleEditProfile = (data) => {
+    setIsLoading(true);
+    editUserProfile(data)
+      .then((res) => setCurrentUser(res))
+      .then(() => handleCloseModal())
+      .catch((err) => console.error(err))
+      .finally(() => setIsLoading(false));
+  };
+
+  const handleLogout = () => {
+    //setToken(localStorage.removeItem("jwt"));
+    setCurrentUser(null);
+    setIsLoggedIn(false);
+  };
 
   useEffect(() => {
     getForcastWeather()
@@ -164,7 +184,7 @@ function App() {
     checkToken(token)
     .then((data) => {
       console.log(data)
-      setCurrentUser(data); // Set the user data in your component state
+      setCurrentUser(data.user); // Set the user data in your component state
       setIsLoggedIn(true);
     })
     .catch((error) => {
@@ -199,13 +219,16 @@ function App() {
             />
           </Route>
           
-          <ProtectedRoute path="/profile">
+          <ProtectedRoute path="/profile"  isLoggedIn={isLoggedIn}>
             <Profile
               onCreateModal={handleCreateModal}
               clothingItems={clothingItems}
               onSelectCard={handleSelectedCard}
+              onSignOut={handleLogout}
+              isLoading={isLoading}
             ></Profile>
           </ProtectedRoute>
+          
         </Switch>
         <Footer />
         {activeModal === "create" && (
@@ -229,6 +252,7 @@ function App() {
             isOpen={activeModal === "signup"}
             handleRegistration={handleRegistration}
             OnClickLogIn={openLogInModal}
+            isLoading={isLoading}
           />
         )}
         {activeModal === "login" && (
@@ -237,6 +261,7 @@ function App() {
             isOpen={activeModal === "login"}
             handleLogin={handleLogin}
             onClickSignUp={openSignUpModal}
+            isLoading={isLoading}
           />
         )}
         {activeModal === "update" && (
@@ -244,8 +269,10 @@ function App() {
             handleCloseModal={handleCloseModal}
             isOpen={activeModal === "update"}
             handleUpdate={handleUpdate}
+            isLoading={isLoading}
           />
         )}
+        {redirectToProfile && <Redirect to="/profile" />}
         </AppContext.Provider>
         </CurrentUserContext.Provider>
       </CurrentTemperatureUnitContext.Provider>

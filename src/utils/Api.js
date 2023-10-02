@@ -36,6 +36,18 @@ export function postItems({ name, link, weather }) {
   }).then(checkResponse);
 }
 
+export function editUserProfile(name, avatar){
+  return fetch(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${localStorage.getItem("jwt")}`,
+    },
+    body: JSON.stringify(name, avatar),
+  }).then(checkResponse);
+} 
+
+
 // DELETE Items
 export function deleteItems(id) {
   return fetch(`${baseUrl}/items/${id}`, {

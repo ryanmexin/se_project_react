@@ -29,6 +29,13 @@
   align-items: center;
 }
 
+.sidebar__avatar-picture {
+  border-radius: 50%;
+  background-color: #000;
+  max-width: 40px;
+  max-height: 40px;
+}
+
 .nav__button {
   background: none;
   border: none;
