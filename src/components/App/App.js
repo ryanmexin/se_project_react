@@ -15,7 +15,7 @@ import Profile from "../Profile/Profile";
 import { Redirect, Switch, Route } from "react-router-dom";
 //import { defaultClothingItems } from "../../utils/constants";
 import AddItemModal from "../AddItemModal/AddItemModal";
-import { deleteItems, getItems, postItems, editUserProfile } from "../../utils/Api";
+import { deleteItems, getItems, postItems, editUserProfile, addCardLike, removeCardLike } from "../../utils/Api";
 import { register, signIn, checkToken } from "../../utils/auth";
 import RegisterModal from "../../components/RegisterModal/RegisterModal";
 import LoginModal from "../../components/LoginModal/LoginModal";
@@ -114,6 +114,17 @@ function App() {
         console.log(err);
       });
   };
+
+  const handleLikeClick = ({ _id, isLiked, user }) => {
+    !isLiked
+      ? addCardLike(_id)
+          .then((updatedCard) => setClothingItems((cards) => cards.map((card) => (card._id === _id ? updatedCard.item : card))))
+          .catch((err) => console.error(err))
+      : removeCardLike(_id)
+          .then((updatedCard) => setClothingItems((cards) => cards.map((card) => (card._id === _id ? updatedCard.item : card))))
+          .catch((err) => console.error(err));
+  };
+
 
   const handleRegistration = ({email, password, nameValue, avatarValue}) => {
     register({email: email, password: password, name: nameValue, avatar: avatarValue})
@@ -225,6 +236,7 @@ function App() {
               weatherTemp={temp}
               onSelectCard={handleSelectedCard}
               clothingItems={clothingItems}
+              onCardLike={handleLikeClick}
             />
           </Route>
           
@@ -234,9 +246,9 @@ function App() {
               clothingItems={clothingItems}
               onSelectCard={handleSelectedCard}
               onClickEditModal={handleEditProfile}
+              onCardLike={handleLikeClick}
               onSignOut={handleLogout}
               onOpenEditProfileModal={openEditProfileModal}
-              isLoading={isLoading}
             ></Profile>
           </ProtectedRoute>
           

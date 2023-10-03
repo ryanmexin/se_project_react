@@ -26,8 +26,39 @@
   margin: 0;
 }
 
+.card__container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+
 .card__image {
   height: 325px;
   width: 328px;
   border-radius: 10px;
+}
+
+.card__like-button {
+  width: 18px;
+  height: 16px;
+  background-image: url(../../images/liked.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin-left: 10px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.card__like-button-inactive {
+  background-color: transparent;
+  background-image: url(../../images/notLiked.svg);
+}
+
+.card__like-button-hidden {
+  visibility: hidden;
 }
