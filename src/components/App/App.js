@@ -1,4 +1,5 @@
 //import logo from "./logo.svg";
+import React from "react";
 import "./App.css";
 import Header from "../Header/Header";
 import UnAuthHeader from "../UnAuthHeader/UnAuthHeader";
@@ -38,7 +39,8 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const appContextValue = { state: { loggedIn, userData } };
   const [redirectToProfile, setRedirectToProfile] = useState(false);
-  //const [token, setToken] = React.useState("");
+  const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
+  const [token, setToken] = React.useState("");
 
 
 
@@ -53,6 +55,13 @@ function App() {
   const openLogInModal = () => {
     setActiveModal("login");
   };
+
+  
+  const openEditProfileModal = () => {
+    setActiveModal("edit");
+  };
+
+ 
 
 
   const handleCloseModal = () => {
@@ -106,8 +115,8 @@ function App() {
       });
   };
 
-  const handleRegistration = ({email, password, name, avatar}) => {
-    register({email: email, password: password, name: name, avatar: avatar})
+  const handleRegistration = ({email, password, nameValue, avatarValue}) => {
+    register({email: email, password: password, name: nameValue, avatar: avatarValue})
       .then((res) => {
         // Registration successful, set the loggedIn state and close the modal
         this.setState({
@@ -162,7 +171,7 @@ function App() {
   };
 
   const handleLogout = () => {
-    //setToken(localStorage.removeItem("jwt"));
+    setToken(localStorage.removeItem("jwt"));
     setCurrentUser(null);
     setIsLoggedIn(false);
   };
@@ -224,8 +233,9 @@ function App() {
               onCreateModal={handleCreateModal}
               clothingItems={clothingItems}
               onSelectCard={handleSelectedCard}
-              onEditModal={handleEditProfile}
+              onClickEditModal={handleEditProfile}
               onSignOut={handleLogout}
+              onOpenEditProfileModal={openEditProfileModal}
               isLoading={isLoading}
             ></Profile>
           </ProtectedRoute>
@@ -270,8 +280,10 @@ function App() {
     handleCloseModal={handleCloseModal}
     isOpen={activeModal === "edit"}
     currentUser={currentUser} // Pass currentUser inside the object
-    handleUopdate={handleEditProfile}
+    //handleUpdate={handleEditProfile}
     isLoading={isLoading}
+    onClickEditModal={openLogInModal}
+    onSubmit={handleEditProfile}
   />
 )}
         {redirectToProfile && <Redirect to="/profile" />}

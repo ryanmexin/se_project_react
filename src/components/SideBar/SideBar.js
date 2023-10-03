@@ -1,21 +1,31 @@
-import {React, useContext} from "react";
+import {React, useContext, useState} from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import avatar from "../../images/avatar.svg";
 import "./SideBar.css";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 
-const SideBar = ({onSignOut, onEditModal}) => {
+const SideBar = ({onSignOut, onOpenEditProfileModal}) => {
   const currentUser = useContext(CurrentUserContext);
   const Avatar = currentUser ? currentUser.avatar : null;
   const Name = currentUser ? currentUser.name : null;
   const history = useHistory();
+  
   const signUserOut = () => {
     onSignOut();
     history.push("/");
   };
   const showAvatar = Avatar !== "" ? true : false;
 
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+
+  const openEditModal = () => {
+    setIsEditModalOpen(true);
+  };
+
+  const closeEditModal = () => {
+    setIsEditModalOpen(false);
+  };
 
   return (
     <div className="sidebar">
@@ -26,13 +36,14 @@ const SideBar = ({onSignOut, onEditModal}) => {
       />
       <p className="sidebar__avatar-name">{Name}</p>
       <div className="sidebar__container-buttons">
-        <button className="side__container-button" type="button" onClick={EditProfileModal}>
+        <button className="side__container-button" type="button"  onClick={onOpenEditProfileModal}>
           Change profile data
         </button>
         <button className="side__container-button" type="button" onClick={signUserOut}>
           Log out
         </button>
       </div>
+      
     </div>
   );
 };

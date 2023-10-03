@@ -24,7 +24,7 @@ const ClothesSection = ({ onSelectCard, onCreateModal, clothingItems }, item, cu
       <div className="clothing__section-cards">
          {isOwn ? parsedCards.map((item) => (
           <ItemCard
-            key={item.id} // Use item.id as the key
+            key={item._id} // Use item.id as the key
             item={item}
             onSelectCard={onSelectCard}
           />

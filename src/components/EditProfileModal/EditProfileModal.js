@@ -4,23 +4,18 @@ import "./EditProfileModal.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 
-const EditProfileModal = ({ handleCloseModal, isOpen }) => {
+const EditProfileModal = ({ handleCloseModal, isOpen, onSubmit }) => {
   const currentUser = useContext(CurrentUserContext)
-  const [name, setName] = useState(currentUser.name);
-  const [avatar, setUrl] = useState(currentUser.avatar);
+  const [nameValue, setNameValue] = useState(currentUser.name);
+  const [avatarValue, setAvatarValue] = useState(currentUser.avatar);
 
-  const handleNameChange = (e) => {
-    setName(e.target.value);
+  const handleNameChange = (evt) => setNameValue(evt.target.value);
+  const handleAvatarChange = (evt) => setAvatarValue(evt.target.value);
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    onSubmit({ name: nameValue, avatar: avatarValue });
   };
-  const handleUrlChange = (e) => {
-    console.log(e.target.value);
-    setUrl(e.target.value);
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  handleNameChange();
-  handleUrlChange();
-  };
+
   
   return (
     <ModalWithForm
@@ -38,7 +33,7 @@ const EditProfileModal = ({ handleCloseModal, isOpen }) => {
           placeholder="Name"
           minLength="1"
           maxLength="30"
-          value={name}
+          value={nameValue}
           onChange={handleNameChange}
         ></input>
       </label>
@@ -51,15 +46,15 @@ const EditProfileModal = ({ handleCloseModal, isOpen }) => {
           placeholder="Image URL"
           minLength="1"
           maxLength="300"
-          value={avatar}
-          onChange={handleUrlChange}
+          value={avatarValue}
+          onChange={handleAvatarChange}
         ></input>
       </label>
       <button
         className="modal__submit-button"
         type="submit"
         name="button"
-        onChange={handleSubmit}
+        onClick={handleSubmit}
       >
         Submit Changes
       </button>
