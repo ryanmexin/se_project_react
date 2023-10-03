@@ -8,7 +8,7 @@ const AddItemModal = ({ handleCloseModal, handleAddItemSubmit, isOpen }) => {
     setName(e.target.value);
   };
 
-  const [link, setUrl] = useState("");
+  const [imageUrl, setUrl] = useState("");
   const handleUrlChange = (e) => {
     console.log(e.target.value);
     setUrl(e.target.value);
@@ -22,7 +22,7 @@ const AddItemModal = ({ handleCloseModal, handleAddItemSubmit, isOpen }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleAddItemSubmit({ name, link, weather });
+    handleAddItemSubmit({ name, imageUrl, weather });
   };
 
   return (
@@ -55,7 +55,7 @@ const AddItemModal = ({ handleCloseModal, handleAddItemSubmit, isOpen }) => {
             name="link"
             minLength="1"
             placeholder="Image URL"
-            value={link}
+            value={imageUrl}
             onChange={handleUrlChange}
           />
         </label>

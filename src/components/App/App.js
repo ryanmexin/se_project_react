@@ -84,6 +84,7 @@ function App() {
   }, []);
 
   const handleAddItemSubmit = (values) => {
+    console.log(values)
     postItems(values)
       .then((data) => {
         setClothingItems([data, ...clothingItems]);

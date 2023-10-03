@@ -21,16 +21,18 @@ export function getItems() {
 }
 
 // POST Items
-export function postItems({ name, link, weather }) {
+export function postItems({ name, imageUrl, weather }) {
   console.log(postItems);
+  const token = localStorage.getItem("jwt");
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
       name,
-      link,
+      imageUrl,
       weather,
     }),
   }).then(checkResponse);
