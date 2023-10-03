@@ -173,7 +173,7 @@ function App() {
   const handleLogout = () => {
     setToken(localStorage.removeItem("jwt"));
     setCurrentUser(null);
-    setIsLoggedIn(false);
+    setLoggedIn(false);
   };
 
   useEffect(() => {
