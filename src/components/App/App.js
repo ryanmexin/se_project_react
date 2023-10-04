@@ -116,7 +116,9 @@ function App() {
       });
   };
 
-  const handleLikeClick = ({ _id, isLiked, user }) => {
+  const handleLikeClick = ( _id, isLiked ) => {
+    console.log(_id)
+    debugger
     !isLiked
       ? addCardLike(_id)
           .then((updatedCard) => setClothingItems((cards) => cards.map((card) => (card._id === _id ? updatedCard.item : card))))
