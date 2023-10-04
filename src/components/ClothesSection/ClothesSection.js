@@ -5,7 +5,7 @@ import ItemCard from "../ItemCard/itemCard";
 
 import "./ClothesSection.css";
 
-const ClothesSection = ({ onSelectCard, onCreateModal, clothingItems }, item, currentUser) => {
+const ClothesSection = ({ onSelectCard, onCreateModal, clothingItems, handleLikeClick }, item, currentUser) => {
   const isOwn = item.owner?._id === currentUser?._id;
   const parsedCards = clothingItems.filter((item) => item.weather);
   
@@ -27,6 +27,8 @@ const ClothesSection = ({ onSelectCard, onCreateModal, clothingItems }, item, cu
             key={item._id} // Use item.id as the key
             item={item}
             onSelectCard={onSelectCard}
+            isLoggedIn={currentUser !== null}
+            onCardLike={handleLikeClick}
           />
         )):""}
       </div>
