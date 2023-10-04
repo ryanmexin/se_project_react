@@ -2,6 +2,7 @@
   font-family: "Familjen Grotesk", sans-serif;
   font-style: normal;
   display: flex;
+  flex-direction: column;
   margin: 0 0 0px 40px;
   justify-content: space-between;
   color: #000;
@@ -9,7 +10,14 @@
   font-weight: 700;
   height: 40px;
   gap: 16px;
+  
 }
+
+.sidebar__container-info {
+  display: flex;
+  gap: 7px;
+}
+
 
 .sidebar__avatar-picture {
   border-radius: 50%;
@@ -19,10 +27,23 @@
 }
 
 .sidebar__avatar-name {
+  width: 157px;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+
+.side__container-button {
   display: flex;
-  align-self: center;
-  margin: 0;
-  padding: 0;
-  min-width: 157px;
-  width: 100%;
+  padding-bottom: 8px;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 18px;
+  line-height: 1.2;
+  font-weight: 700;
+  border: none;
+  background-color: white;
+  cursor: pointer;
 }

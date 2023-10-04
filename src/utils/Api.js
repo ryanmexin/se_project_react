@@ -51,11 +51,13 @@ export function editUserProfile({name, avatar}){
 
 
 // DELETE Items
-export function deleteItems(id) {
-  return fetch(`${baseUrl}/items/${id}`, {
+export function deleteItems(selectedCard) {
+  console.log(selectedCard)
+  return fetch(`${baseUrl}/items/${selectedCard}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${localStorage.getItem("jwt")}`,
     },
   }).then(checkResponse);
 }

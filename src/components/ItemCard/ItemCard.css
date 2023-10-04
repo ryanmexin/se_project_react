@@ -30,15 +30,27 @@
   position: relative;
   display: flex;
   justify-content: center;
+  background-color: green;
+}
+
+.card_info{
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  flex-direction: row;
+  top: 16px;
+  align-items: center;
 }
 
 
 
 
 .card__image {
+  width: 325px;
   height: 325px;
-  width: 328px;
-  border-radius: 10px;
+  max-width: 330px;
+  max-height: 330px;
+  border-radius: 20px;
 }
 
 .card__like-button {
