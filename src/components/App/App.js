@@ -239,7 +239,7 @@ function App() {
               weatherTemp={temp}
               onSelectCard={handleSelectedCard}
               clothingItems={clothingItems}
-              onCardLike={handleLikeClick}
+              onCardClick={handleLikeClick}
             />
           </Route>
           
@@ -249,7 +249,7 @@ function App() {
               clothingItems={clothingItems}
               onSelectCard={handleSelectedCard}
               onClickEditModal={handleEditProfile}
-              onCardLike={handleLikeClick}
+              onCardClick={handleLikeClick}
               onSignOut={handleLogout}
               onOpenEditProfileModal={openEditProfileModal}
             ></Profile>

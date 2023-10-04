@@ -2,7 +2,7 @@ import { React, useContext } from "react";
 import "./ItemCard.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-const ItemCard = ({ item, onSelectCard, onCardLike, isLoggedIn }) => {
+const ItemCard = ({ item, onSelectCard, onCardClick, isLoggedIn }) => {
   const currentUser = useContext(CurrentUserContext);
   const cardId = item._id;
   console.log(item._id)
@@ -13,7 +13,7 @@ const ItemCard = ({ item, onSelectCard, onCardLike, isLoggedIn }) => {
     : "card__like-button card__like-button-inactive";
 
   const handleLikeClick = () => {
-    onCardLike({ _id: cardId, isLiked: isLiked, user: userId });
+    onCardClick({ _id: cardId, isLiked: isLiked, user: userId });
     console.log(cardId, isLiked, userId);
   };
 
