@@ -5,7 +5,7 @@ import ClothesSection from "../ClothesSection/ClothesSection";
 import "./Profile.css";
 import EditProfileModal from "../EditProfileModal/EditProfileModal"
 
-const Profile = ({ onSelectCard, onCreateModal, clothingItems, onSignOut, onOpenEditProfileModal, onCardClick }) => {
+const Profile = ({ onSelectCard, onCreateModal, clothingItems, onSignOut, onOpenEditProfileModal, onCardClick, isLoggedIn }) => {
   
   
   return (
@@ -18,6 +18,7 @@ const Profile = ({ onSelectCard, onCreateModal, clothingItems, onSignOut, onOpen
         onCreateModal={onCreateModal}
         clothingItems={clothingItems}
         onCardClick={onCardClick}
+        isLoggedIn={isLoggedIn}
       />
       
     </div>
