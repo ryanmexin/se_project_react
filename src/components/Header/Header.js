@@ -21,6 +21,7 @@ const Header = ({ onCreateModal }) => {
  const redirectToProfile = () => {
     // Redirect to the Profile page
     history.push("/profile");
+    console.log("moved to profile")
   };
 
 

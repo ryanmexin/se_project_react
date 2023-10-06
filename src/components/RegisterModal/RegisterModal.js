@@ -75,6 +75,7 @@ const RegisterModal = ({ handleCloseModal, isOpen, OnClickLogIn, handleRegistrat
           placeholder="Name"
           minLength="1"
           maxLength="30"
+          required
           value={name}
           onChange={handleNameChange}
         ></input>

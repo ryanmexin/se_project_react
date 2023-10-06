@@ -144,7 +144,7 @@ function App() {
       avatar: avatarValue,
   })
       .then((res) => {
-        debugger
+        
         // Registration successful, set the loggedIn state and close the modal
         setIsLoggedIn(true);
         setCurrentUser(res);
@@ -236,7 +236,7 @@ function App() {
     <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
     >
-      <CurrentUserContext.Provider value={currentUser} isLoggedIn={isLoggedIn}>
+      <CurrentUserContext.Provider value={currentUser} setIsLoggedIn={setIsLoggedIn}>
         <AppContext.Provider value={appContextValue}>
           {isLoggedIn ? (
             <Header
