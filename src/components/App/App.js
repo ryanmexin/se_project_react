@@ -41,9 +41,9 @@ function App() {
   const [userData, setUserData] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(false);
+  //const [loggedIn, setLoggedIn] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const appContextValue = { state: { loggedIn, userData } };
+  const appContextValue = { state: { isLoggedIn, userData } };
   const [redirectToProfile, setRedirectToProfile] = useState(false);
   const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
   const [token, setToken] = React.useState("");
@@ -135,22 +135,20 @@ function App() {
           .catch((err) => console.error(err));
   };
 
-  const handleRegistration = ({ email, password, nameValue, avatarValue }) => {
+  const handleRegistration = (email, password, nameValue, avatarValue) => {
     
     register({
       email: email,
       password: password,
       name: nameValue,
       avatar: avatarValue,
-    })
+  })
       .then((res) => {
+        debugger
         // Registration successful, set the loggedIn state and close the modal
-        this.setState({
-          isloggedIn: true,
-        });
+        setIsLoggedIn(true);
         setCurrentUser(res);
         handleLogin({ email, password });
-        setLoggedIn(true);
         handleCloseModal();
       })
       .catch((error) => {
@@ -167,7 +165,7 @@ function App() {
         if (data.token) {
           localStorage.setItem("jwt", data.token);
           // Successfully logged in
-          setLoggedIn(true);
+          setIsLoggedIn(true);
           setCurrentUser(data);
           handleCloseModal();
           setRedirectToProfile(true);
@@ -196,7 +194,7 @@ function App() {
   const handleLogout = () => {
     setToken(localStorage.removeItem("jwt"));
     setCurrentUser(null);
-    setLoggedIn(false);
+    setIsLoggedIn(false);
   };
 
   useEffect(() => {
@@ -228,7 +226,7 @@ function App() {
       setIsLoggedIn(false);
       console.log("Token not found");
     }
-  }, [loggedIn]);
+  }, [isLoggedIn]);
 
   console.log(temp);
 
@@ -238,9 +236,9 @@ function App() {
     <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
     >
-      <CurrentUserContext.Provider value={currentUser} loggedIn={loggedIn}>
+      <CurrentUserContext.Provider value={currentUser} isLoggedIn={isLoggedIn}>
         <AppContext.Provider value={appContextValue}>
-          {loggedIn ? (
+          {isLoggedIn ? (
             <Header
               onCreateModal={handleCreateModal}
               temp={temp}

@@ -27,7 +27,7 @@ const RegisterModal = ({ handleCloseModal, isOpen, OnClickLogIn, handleRegistrat
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    register( email, password, name, avatar );
+    handleRegistration( email, password, name, avatar );
   };
   const handleLogin = (e) => {
     e.preventDefault();
@@ -37,7 +37,7 @@ const RegisterModal = ({ handleCloseModal, isOpen, OnClickLogIn, handleRegistrat
     <ModalWithForm
       onClose={handleCloseModal}
       isOpen={isOpen}
-      onSubmit={handleRegistration}
+      onSubmit={handleSubmit}
     >
       <h2>Sign up</h2>
       <label className="modal__label">
