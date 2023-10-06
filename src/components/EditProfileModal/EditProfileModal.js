@@ -23,7 +23,7 @@ const EditProfileModal = ({ handleCloseModal, isOpen, onSubmit }) => {
       isOpen={isOpen}
       onSubmit={handleSubmit}
     >
-      <h2>Sign up</h2>
+      <h2>Change Profile Data</h2>
       <label className="modal__label">
         Name
         <input

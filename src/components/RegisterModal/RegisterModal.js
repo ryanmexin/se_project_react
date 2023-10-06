@@ -4,7 +4,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./RegisterModal.css";
 import { register } from "../../utils/auth"
 
-const RegisterModal = ({ handleCloseModal, isOpen, OnClickLogIn }) => {
+const RegisterModal = ({ handleCloseModal, isOpen, OnClickLogIn, handleRegistration }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -37,7 +37,7 @@ const RegisterModal = ({ handleCloseModal, isOpen, OnClickLogIn }) => {
     <ModalWithForm
       onClose={handleCloseModal}
       isOpen={isOpen}
-      onSubmit={handleSubmit}
+      onSubmit={handleRegistration}
     >
       <h2>Sign up</h2>
       <label className="modal__label">

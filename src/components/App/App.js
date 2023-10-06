@@ -87,7 +87,7 @@ function App() {
     console.log(values);
     postItems(values)
       .then((data) => {
-        setClothingItems([data, ...clothingItems]);
+        setClothingItems([data.data, ...clothingItems]);
         handleCloseModal();
       })
       .catch((error) => {
@@ -136,6 +136,7 @@ function App() {
   };
 
   const handleRegistration = ({ email, password, nameValue, avatarValue }) => {
+    
     register({
       email: email,
       password: password,
@@ -145,7 +146,7 @@ function App() {
       .then((res) => {
         // Registration successful, set the loggedIn state and close the modal
         this.setState({
-          loggedIn: true,
+          isloggedIn: true,
         });
         setCurrentUser(res);
         handleLogin({ email, password });

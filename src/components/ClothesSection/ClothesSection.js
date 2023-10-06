@@ -9,8 +9,8 @@ import "./ClothesSection.css";
 const ClothesSection = ({ onSelectCard, onCreateModal, clothingItems, onCardClick, isLoggedIn}) => {
   const currentUser = useContext(CurrentUserContext);
   const userId = currentUser?._id;
-  const serverCards = clothingItems.filter((item) => {
-    return item.owner === userId;
+  const serverCards = clothingItems.filter((onSelectCard) => {
+    return onSelectCard.owner === userId;
   });
   
   return (

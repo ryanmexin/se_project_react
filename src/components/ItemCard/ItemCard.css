@@ -33,7 +33,7 @@
   background-color: green;
 }
 
-.card_info{
+.card__info{
   display: flex;
   justify-content: center;
   position: absolute;

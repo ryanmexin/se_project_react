@@ -5,7 +5,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 const ItemCard = ({ item, onSelectCard, onCardClick, isLoggedIn }) => {
   const currentUser = useContext(CurrentUserContext);
   const cardId = item._id;
-  console.log(item._id)
+  console.log(item._id);
   const userId = currentUser ? currentUser._id : "";
   const isLiked = item.likes.some((id) => id === currentUser?._id);
   const likeButtonClass = isLiked
@@ -19,7 +19,7 @@ const ItemCard = ({ item, onSelectCard, onCardClick, isLoggedIn }) => {
 
   return (
     <div className="card">
-      <div className="card_info">
+      <div className="card__info">
         <span className="card_name">{item.name}</span>
         {isLoggedIn ? (
           <button
