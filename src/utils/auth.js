@@ -60,25 +60,27 @@ export const signIn = ( email, password ) => {
 
 //register
 export const register = (email, password, name, avatar) => {
-  console.log(email)
-  console.log(password)
-  console.log(name)
-  console.log(avatar)
+  console.log(email);
+  console.log(password);
+  console.log(name);
+  console.log(avatar);
   return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
-    body: JSON.stringify( {email, password, name, avatar} ),
-  }).then((response) => {
-    try {
-      if (response.status === 200) {
-        return response.json();
+    body: JSON.stringify( email, password, name, avatar ),
+  })
+    .then((response) => {
+      try {
+        if (response.status === 201) {
+          return response.json();
+        }
+      } catch (e) {
+        console.error(e);
+        return e;
       }
-    } catch (e) {
-      console.error(e);
-      return e;
-    }
-  });
+    })
+    .then(checkResponse); // Add this line at the end to check the response
 };

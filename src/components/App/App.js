@@ -104,8 +104,9 @@ function App() {
     console.log(cardElement);
     deleteItems(cardElement)
       .then(() => {
-        const newClothesList = clothingItems.filter((cards) => {
-          return cards.id !== cardElement;
+        const newClothesList = clothingItems.filter((card) => {
+          console.log(card._id)
+          return card._id !== cardElement;
         });
         console.log(newClothesList);
         setClothingItems(newClothesList);
@@ -148,7 +149,7 @@ function App() {
         // Registration successful, set the loggedIn state and close the modal
         setIsLoggedIn(true);
         setCurrentUser(res);
-        handleLogin({ email, password });
+        handleLogin( email, password );
         handleCloseModal();
       })
       .catch((error) => {
