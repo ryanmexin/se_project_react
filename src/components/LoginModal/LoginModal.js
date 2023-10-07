@@ -17,8 +17,8 @@ const LoginModal = ({ handleCloseModal, isOpen, onClickSignUp, handleLogin}) => 
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
+    //e.preventDefault();
     handleLogin( email, password );
   };
   const handleRegister = (e) => {
