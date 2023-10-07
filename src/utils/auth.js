@@ -64,14 +64,13 @@ export const register = ({email, password, name, avatar}) => {
   console.log(password);
   console.log(name);
   console.log(avatar);
-  debugger
   return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
-    body: JSON.stringify( email, password, name, avatar ),
+    body: JSON.stringify({ email, password, name, avatar }),
   })
   .then((response) => {
     if (response.status === 200) {

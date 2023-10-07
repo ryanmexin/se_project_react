@@ -58,6 +58,7 @@ const LoginModal = ({ handleCloseModal, isOpen, onClickSignUp, handleLogin}) => 
           onChange={handlePasswordChange}
         ></input>
       </label>
+      <div className="button-container">
       <button
         className="modal__submit-button"
         type="submit"
@@ -67,7 +68,7 @@ const LoginModal = ({ handleCloseModal, isOpen, onClickSignUp, handleLogin}) => 
        Log In
       </button>
       <button
-        className="modal__submit-register-button"
+        className="modal__form-button"
         type="button"
         name="button"
         onChange={handleRegister}
@@ -75,6 +76,7 @@ const LoginModal = ({ handleCloseModal, isOpen, onClickSignUp, handleLogin}) => 
       >
         or Register
       </button>
+      </div>
     </ModalWithForm>
   );
 };
