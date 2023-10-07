@@ -12,7 +12,7 @@ import { getForcastWeather } from "../../utils/weatherApi";
 import { parseWeatherData } from "../../utils/weatherApi";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import Profile from "../Profile/Profile";
-import { Redirect, Switch, Route } from "react-router-dom";
+import { Redirect, Switch, Route, useHistory } from "react-router-dom";
 //import { defaultClothingItems } from "../../utils/constants";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import {
@@ -45,6 +45,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const appContextValue = { state: { isLoggedIn, userData } };
   const [redirectToProfile, setRedirectToProfile] = useState(false);
+  const history = useHistory();
   const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
   const [token, setToken] = React.useState("");
 
@@ -162,7 +163,6 @@ function App() {
     signIn(email, password)
       .then((response) => response.json())
       .then((data) => {
-        debugger
         console.log("API Response:", data);
         if (data.token) {
           console.log(data.token)
@@ -171,7 +171,8 @@ function App() {
           setIsLoggedIn(true);
           setCurrentUser(data);
           handleCloseModal();
-          setRedirectToProfile(true);
+          history.push("/profile");
+          //setRedirectToProfile(true);
         } else {
           // Handle login failure
           console.error("Login failed.");
@@ -191,7 +192,7 @@ function App() {
       .then((res) => setCurrentUser(res))
       .then(() => handleCloseModal())
       .catch((err) => console.error(err))
-      .finally(() => setIsLoading(false));
+
   };
 
   const handleLogout = () => {
@@ -229,7 +230,7 @@ function App() {
       setIsLoggedIn(false);
       console.log("Token not found");
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn, history ]);
 
   console.log(temp);
 
