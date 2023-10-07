@@ -59,11 +59,12 @@ export const signIn = ( email, password ) => {
 };
 
 //register
-export const register = (email, password, name, avatar) => {
+export const register = ({email, password, name, avatar}) => {
   console.log(email);
   console.log(password);
   console.log(name);
   console.log(avatar);
+  debugger
   return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
