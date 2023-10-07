@@ -162,8 +162,10 @@ function App() {
     signIn(email, password)
       .then((response) => response.json())
       .then((data) => {
+        debugger
         console.log("API Response:", data);
         if (data.token) {
+          console.log(data.token)
           localStorage.setItem("jwt", data.token);
           // Successfully logged in
           setIsLoggedIn(true);
