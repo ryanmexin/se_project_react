@@ -138,7 +138,7 @@ function App() {
   };
 
   const handleRegistration = (email, password, nameValue, avatarValue) => {
-    
+    //debugger
     register({
       email: email,
       password: password,
@@ -146,12 +146,12 @@ function App() {
       avatar: avatarValue,
   })
       .then((res) => {
-        
+        console.log("Registration Response:", res);
         // Registration successful, set the loggedIn state and close the modal
         setIsLoggedIn(true);
-        setCurrentUser(res);
-        handleLogin( email, password );
+        setCurrentUser(res.userData);
         handleCloseModal();
+        history.push("/profile");
       })
       .catch((error) => {
         console.error(error);
@@ -165,8 +165,8 @@ function App() {
       .then((data) => {
         console.log("API Response:", data);
         if (data.token) {
-          console.log(data.token)
           localStorage.setItem("jwt", data.token);
+          console.log(data.token)
           // Successfully logged in
           setIsLoggedIn(true);
           setCurrentUser(data);
@@ -306,7 +306,6 @@ function App() {
               isOpen={activeModal === "signup"}
               handleRegistration={handleRegistration}
               OnClickLogIn={openLogInModal}
-              isLoading={isLoading}
             />
           )}
           {activeModal === "login" && (
@@ -315,7 +314,6 @@ function App() {
               isOpen={activeModal === "login"}
               handleLogin={handleLogin}
               onClickSignUp={openSignUpModal}
-              isLoading={isLoading}
             />
           )}
           {activeModal === "edit" && (

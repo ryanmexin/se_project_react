@@ -72,12 +72,14 @@ export const register = ({email, password, name, avatar}) => {
     },
     body: JSON.stringify({ email, password, name, avatar }),
   })
-  .then((response) => {
-    if (response.status === 200) {
-      return response.json(); // Return the JSON data for a successful response
-    } else {
-      throw new Error(`Registration failed with status: ${response.status}`);
-    }
-  })
+  // .then((response) => {
+  //   if (response.status === 200) {
+  //     return response.json(); // Return the JSON data for a successful response
+  //   } else {
+  //     throw new Error(`Registration failed with status: ${response.status}`);
+  //   }
+  // })
   .then(checkResponse); // Add this line at the end to check the response
 };
+
+
