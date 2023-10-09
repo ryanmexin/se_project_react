@@ -124,14 +124,14 @@ function App() {
       ? addCardLike(_id)
           .then((updatedCard) =>
             setClothingItems((cards) =>
-              cards.map((card) => (card._id === _id ? updatedCard.item : card))
+              cards.map((card) => (card._id === _id ? updatedCard : card))
             )
           )
           .catch((err) => console.error(err))
       : removeCardLike(_id)
           .then((updatedCard) =>
             setClothingItems((cards) =>
-              cards.map((card) => (card._id === _id ? updatedCard.item : card))
+              cards.map((card) => (card._id === _id ? updatedCard : card))
             )
           )
           .catch((err) => console.error(err));
@@ -148,10 +148,7 @@ function App() {
       .then((res) => {
         console.log("Registration Response:", res);
         // Registration successful, set the loggedIn state and close the modal
-        setIsLoggedIn(true);
-        setCurrentUser(res.userData);
-        handleCloseModal();
-        history.push("/profile");
+        handleLogin(email,password);
       })
       .catch((error) => {
         console.error(error);
