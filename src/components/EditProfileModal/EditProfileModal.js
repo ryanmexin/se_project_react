@@ -22,6 +22,7 @@ const EditProfileModal = ({ handleCloseModal, isOpen, onSubmit }) => {
       onClose={handleCloseModal}
       isOpen={isOpen}
       onSubmit={handleSubmit}
+      buttonText={"Save"}
     >
       <h2>Change Profile Data</h2>
       <label className="modal__label">
@@ -50,14 +51,7 @@ const EditProfileModal = ({ handleCloseModal, isOpen, onSubmit }) => {
           onChange={handleAvatarChange}
         ></input>
       </label>
-      <button
-        className="modal__submit-button"
-        type="submit"
-        name="button"
-        onClick={handleSubmit}
-      >
-        Submit Changes
-      </button>
+      
     </ModalWithForm>
   );
 };

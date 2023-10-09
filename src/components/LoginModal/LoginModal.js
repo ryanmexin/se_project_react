@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./LoginModal.css";
 
@@ -7,6 +7,7 @@ import "./LoginModal.css";
 const LoginModal = ({ handleCloseModal, isOpen, onClickSignUp, handleLogin}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory();
 
   const handleEmailChange = (e) => {
     console.log(e.target.value);
@@ -23,13 +24,17 @@ const LoginModal = ({ handleCloseModal, isOpen, onClickSignUp, handleLogin}) => 
   };
   const handleRegister = (e) => {
     e.preventDefault();
-    return <Redirect to="/signup" />;
+    history.push("/signup");
   };
   return (
     <ModalWithForm
       onClose={handleCloseModal}
       isOpen={isOpen}
       onSubmit={handleSubmit}
+      buttonText={"Log In"}
+      hasRedirectButton={true}
+      redirectButtonText="or Register"
+      redirectButtonClick={onClickSignUp}
     >
       <h2>Log in</h2>
       <label className="modal__label">
@@ -59,23 +64,7 @@ const LoginModal = ({ handleCloseModal, isOpen, onClickSignUp, handleLogin}) => 
         ></input>
       </label>
       <div className="button-container">
-      <button
-        className="modal__submit-button"
-        type="submit"
-        name="button"
-        onChange={handleSubmit}
-      >
-       Log In
-      </button>
-      <button
-        className="modal__form-button"
-        type="button"
-        name="button"
-        onChange={handleRegister}
-        onClick={onClickSignUp}
-      >
-        or Register
-      </button>
+
       </div>
     </ModalWithForm>
   );

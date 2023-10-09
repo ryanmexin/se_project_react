@@ -83,6 +83,20 @@
   cursor: pointer;
 } */
 
+.modal__redirect-button {
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 16px;
+  background-color: #fff;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.5);
+  border-color: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-width: 0;
+  border-radius: 4px;
+  margin-top: 32px;
+}
+
 .modal__form-button:hover {
   background: rgba(0, 0, 0, 0.6);
 }

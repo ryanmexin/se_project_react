@@ -36,6 +36,14 @@
   max-height: 40px;
 }
 
+.header__nav {
+  display: flex;
+  gap: 20px;
+  list-style-type: none;
+  align-items: center;
+  padding: 0;
+}
+
 .nav__button {
   background: none;
   border: none;

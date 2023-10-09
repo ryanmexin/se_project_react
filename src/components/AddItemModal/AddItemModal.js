@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const AddItemModal = ({ handleCloseModal, handleAddItemSubmit, isOpen }) => {
+const AddItemModal = ({ handleCloseModal, handleAddItemSubmit, isOpen, buttonText }) => {
   const [name, setName] = useState("");
   const handleNameChange = (e) => {
     console.log(e.target.value);
@@ -27,7 +27,7 @@ const AddItemModal = ({ handleCloseModal, handleAddItemSubmit, isOpen }) => {
 
   return (
     <ModalWithForm
-      buttonText="Add garment"
+      buttonText="Add Garment"
       title="New Garment"
       onClose={handleCloseModal}
       isOpen={isOpen}
@@ -74,7 +74,7 @@ const AddItemModal = ({ handleCloseModal, handleAddItemSubmit, isOpen }) => {
               onChange={handleWeatherType}
             />
             <label>
-              <span>Hot</span>
+            <label htmlFor="hot">Hot</label>
             </label>
           </div>
           <div>
@@ -87,7 +87,7 @@ const AddItemModal = ({ handleCloseModal, handleAddItemSubmit, isOpen }) => {
               name="weatherType"
               onChange={handleWeatherType}
             />
-            <label>Warm</label>
+            <label htmlFor="warm">Warm</label>
           </div>
           <div>
             {" "}
@@ -99,11 +99,11 @@ const AddItemModal = ({ handleCloseModal, handleAddItemSubmit, isOpen }) => {
               name="weatherType"
               onChange={handleWeatherType}
             />
-            <label>Cold</label>
+            <label htmlFor="cold">Cold</label>
           </div>
-          <button className="modal__form-button" type="submit">
+          {/* <button className="modal__form-button" type="submit">
             Add Garment
-          </button>
+          </button> */}
         </div>
       </div>
     </ModalWithForm>

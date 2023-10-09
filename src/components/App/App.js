@@ -2,7 +2,6 @@
 import React from "react";
 import "./App.css";
 import Header from "../Header/Header";
-import UnAuthHeader from "../UnAuthHeader/UnAuthHeader";
 import Footer from "../Footer/Footer";
 import Main from "../Main/Main";
 import { useState } from "react";
@@ -28,7 +27,7 @@ import RegisterModal from "../../components/RegisterModal/RegisterModal";
 import LoginModal from "../../components/LoginModal/LoginModal";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-import { AppContext } from "../AppContext";
+import { AppContext } from "../../contexts/AppContext";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 
 // rendering the header the weather card and the card clothing section
@@ -54,10 +53,12 @@ function App() {
   };
 
   const openSignUpModal = () => {
+    console.log("button clicked");
     setActiveModal("signup");
   };
 
   const openLogInModal = () => {
+    console.log("clicked button");
     setActiveModal("login");
   };
 
@@ -106,7 +107,7 @@ function App() {
     deleteItems(cardElement)
       .then(() => {
         const newClothesList = clothingItems.filter((card) => {
-          console.log(card._id)
+          console.log(card._id);
           return card._id !== cardElement;
         });
         console.log(newClothesList);
@@ -118,7 +119,7 @@ function App() {
       });
   };
 
-  const handleLikeClick = ({_id, isLiked, user}) => {
+  const handleLikeClick = ({ _id, isLiked, user }) => {
     console.log(_id);
     !isLiked
       ? addCardLike(_id)
@@ -144,11 +145,11 @@ function App() {
       password: password,
       name: nameValue,
       avatar: avatarValue,
-  })
+    })
       .then((res) => {
         console.log("Registration Response:", res);
         // Registration successful, set the loggedIn state and close the modal
-        handleLogin(email,password);
+        handleLogin(email, password);
       })
       .catch((error) => {
         console.error(error);
@@ -163,7 +164,7 @@ function App() {
         console.log("API Response:", data);
         if (data.token) {
           localStorage.setItem("jwt", data.token);
-          console.log(data.token)
+          console.log(data.token);
           // Successfully logged in
           setIsLoggedIn(true);
           setCurrentUser(data);
@@ -188,8 +189,7 @@ function App() {
     editUserProfile(data)
       .then((res) => setCurrentUser(res))
       .then(() => handleCloseModal())
-      .catch((err) => console.error(err))
-
+      .catch((err) => console.error(err));
   };
 
   const handleLogout = () => {
@@ -227,7 +227,7 @@ function App() {
       setIsLoggedIn(false);
       console.log("Token not found");
     }
-  }, [isLoggedIn, history ]);
+  }, [isLoggedIn, history]);
 
   console.log(temp);
 
@@ -237,21 +237,20 @@ function App() {
     <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
     >
-      <CurrentUserContext.Provider value={currentUser} setIsLoggedIn={setIsLoggedIn}>
+      <CurrentUserContext.Provider
+        value={currentUser}
+        setIsLoggedIn={setIsLoggedIn}
+      >
         <AppContext.Provider value={appContextValue}>
-          {isLoggedIn ? (
-            <Header
-              onCreateModal={handleCreateModal}
-              temp={temp}
-              user={currentUser}
-            />
-          ) : (
-            <UnAuthHeader
-              onClickSignUp={openSignUpModal}
-              OnClickLogIn={openLogInModal}
-              temp={temp}
-            />
-          )}
+          <Header
+            onCreateModal={handleCreateModal}
+            temp={temp}
+            user={currentUser}
+            onClickSignUp={openSignUpModal}
+            onClickLogIn={openLogInModal}
+            isLoggedIn={isLoggedIn}
+          />
+
           <Switch>
             <Route exact path="/">
               <Main
@@ -277,7 +276,6 @@ function App() {
                   onSignOut={handleLogout}
                   onOpenEditProfileModal={openEditProfileModal}
                   isLoggedIn={isLoggedIn}
-                  
                 />
               )}
             />
