@@ -259,6 +259,7 @@ function App() {
                 onSelectCard={handleSelectedCard}
                 clothingItems={clothingItems}
                 onCardClick={handleLikeClick}
+                isLoggedIn={isLoggedIn}
               />
             </Route>
 

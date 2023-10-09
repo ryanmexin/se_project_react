@@ -17,24 +17,16 @@ const SideBar = ({onSignOut, onOpenEditProfileModal}) => {
   };
   const showAvatar = Avatar !== "" ? true : false;
 
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-
-  const openEditModal = () => {
-    setIsEditModalOpen(true);
-  };
-
-  const closeEditModal = () => {
-    setIsEditModalOpen(false);
-  };
+ 
 
   return (
     <div className="sidebar">
       <div className="sidebar__container-info">
-      <img
-        alt="Avatar"
-        src={Avatar}
-        className="sidebar__avatar-picture"
-      />
+      {showAvatar ?(
+      <img className="sidebar__avatar-picture" src={Avatar} alt="Avatar"/>
+      ):(
+        <p className="sidebar__avatar-placeholder">{Name[0]?.toUpperCase()}</p>
+        )}
       <p className="sidebar__avatar-name">{Name}</p>
       </div>
       <div className="sidebar__container-buttons">
@@ -50,3 +42,7 @@ const SideBar = ({onSignOut, onOpenEditProfileModal}) => {
   );
 };
 export default SideBar;
+
+ // alt="Avatar"
+        // src={Avatar}
+        // className="sidebar__avatar-picture"
