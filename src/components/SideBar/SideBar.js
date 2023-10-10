@@ -7,15 +7,15 @@ import "./SideBar.css";
 
 const SideBar = ({onSignOut, onOpenEditProfileModal}) => {
   const currentUser = useContext(CurrentUserContext);
-  const Avatar = currentUser ? currentUser.avatar : null;
-  const Name = currentUser ? currentUser.name : null;
+  const avatar = currentUser ? currentUser.avatar : null;
+  const name = currentUser ? currentUser.name : null;
   const history = useHistory();
   
   const signUserOut = () => {
     onSignOut();
     history.push("/");
   };
-  const showAvatar = Avatar !== "" ? true : false;
+  const showAvatar = avatar !== "" ? true : false;
 
  
 
@@ -23,11 +23,11 @@ const SideBar = ({onSignOut, onOpenEditProfileModal}) => {
     <div className="sidebar">
       <div className="sidebar__container-info">
       {showAvatar ?(
-      <img className="sidebar__avatar-picture" src={Avatar} alt="Avatar"/>
+      <img className="sidebar__avatar-picture" src={avatar} alt="Avatar"/>
       ):(
-        <p className="sidebar__avatar-placeholder">{Name[0]?.toUpperCase()}</p>
+        <p className="sidebar__avatar-placeholder">{name[0]?.toUpperCase()}</p>
         )}
-      <p className="sidebar__avatar-name">{Name}</p>
+      <p className="sidebar__avatar-name">{name}</p>
       </div>
       <div className="sidebar__container-buttons">
         <button className="side__container-button" type="button"  onClick={onOpenEditProfileModal}>

@@ -182,8 +182,6 @@ function App() {
       });
   };
 
-  const handleUpdate = (name, avatar) => {};
-
   const handleEditProfile = (data) => {
     setIsLoading(true);
     editUserProfile(data)
