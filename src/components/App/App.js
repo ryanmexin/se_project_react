@@ -159,7 +159,6 @@ function App() {
 
   const handleLogin = (email, password) => {
     signIn(email, password)
-      .then((response) => response.json())
       .then((data) => {
         console.log("API Response:", data);
         if (data.token) {
@@ -321,7 +320,6 @@ function App() {
               onSubmit={handleEditProfile}
             />
           )}
-          {redirectToProfile && <Redirect to="/profile" />}
         </AppContext.Provider>
       </CurrentUserContext.Provider>
     </CurrentTemperatureUnitContext.Provider>
