@@ -298,7 +298,7 @@ function App() {
               handleCloseModal={handleCloseModal}
               isOpen={activeModal === "signup"}
               handleRegistration={handleRegistration}
-              OnClickLogIn={openLogInModal}
+              onClickLogIn={openLogInModal}
             />
           )}
           {activeModal === "login" && (

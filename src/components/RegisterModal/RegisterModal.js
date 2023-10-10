@@ -4,7 +4,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./RegisterModal.css";
 import { register } from "../../utils/auth"
 
-const RegisterModal = ({ handleCloseModal, isOpen, OnClickLogIn, handleRegistration }) => {
+const RegisterModal = ({ handleCloseModal, isOpen, onClickLogIn, handleRegistration }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -42,7 +42,7 @@ const RegisterModal = ({ handleCloseModal, isOpen, OnClickLogIn, handleRegistrat
       buttonText={"Next"}
       hasRedirectButton={true}
       redirectButtonText="or Log in"
-      redirectButtonClick={OnClickLogIn}
+      redirectButtonClick={onClickLogIn}
     >
       <h2>Sign up</h2>
       <label className="modal__label">
