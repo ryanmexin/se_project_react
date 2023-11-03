@@ -1,6 +1,8 @@
 import { checkResponse } from "./Api";
 
-const baseUrl = "http://localhost:3001";
+const baseUrl = process.env.NODE_ENV === 'production' 
+? 'api.wtwr.serverpit.com'
+: 'http://localhost:3001'
 
 
    export const checkToken = (token) => {
@@ -22,7 +24,7 @@ export const signIn = ( email, password ) => {
   console.log(email)
   console.log(password)
   
-  return fetch(`${baseUrl}/signIn`, {
+  return fetch(`${baseUrl}/signin`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
