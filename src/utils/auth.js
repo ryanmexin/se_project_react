@@ -1,7 +1,7 @@
 import { checkResponse } from "./Api";
 
 const baseUrl = process.env.NODE_ENV === 'production' 
-? 'api.wtwr.serverpit.com'
+? 'https://api.wtwr.serverpit.com'
 : 'http://localhost:3001'
 
 
